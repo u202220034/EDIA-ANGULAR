@@ -6,7 +6,7 @@ import { CategoriaComponent } from "./components/categoria/categoria.component";
 
 @Component({
   selector: 'app-root',
-  imports: [UsuarioComponent, TipoactividadComponent,CategoriaComponent],
+  imports: [UsuarioComponent, CategoriaComponent , TipoactividadComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
