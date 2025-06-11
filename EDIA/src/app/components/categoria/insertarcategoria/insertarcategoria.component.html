@@ -1,0 +1,16 @@
+<div>
+  <div><h1>Registro de Categorias</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field>
+        <mat-label>Categorias</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+          El nombre es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <button matButton="elevated">Registrar</button>
+    </form>
+  </div>
+</div>
