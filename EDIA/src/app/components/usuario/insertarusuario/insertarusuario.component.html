@@ -1,0 +1,65 @@
+<div>
+    <div> <h1>Registro de Usuario</h1></div>
+    <div>
+        <form [formGroup]="form" (submit)="aceptar()">
+            <mat-form-field>
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="usuario" />
+                <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+                    El usuario es obligatorio!!
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-error *ngIf="form.get('password')?.hasError('required')">
+                    La contraseña es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput type="nombre" formControlName="nombre" />
+                <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+                    El nombre es obligatorio!!
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Apellidos</mat-label>
+                <input matInput type="apellidos" formControlName="apellidos" />
+                <mat-error *ngIf="form.get('apellidos')?.hasError('required')">
+                    Los apellidos son obligatorios!!
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>Correo</mat-label>
+                <input matInput type="email" formControlName="correo" />
+                <mat-error *ngIf="form.get('correo')?.hasError('required')">
+                    El correo es obligatorio!!
+                </mat-error>
+                <mat-error *ngIf="form.get('correo')?.hasError('email')">
+                    El correo debe ser un email válido!!
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field>
+                <mat-label>DNI</mat-label>
+                <input matInput type="dni" formControlName="dni" />
+                <mat-error *ngIf="form.get('dni')?.hasError('required')">
+                    El DNI es obligatorio!!
+                </mat-error>
+                <mat-error *ngIf="form.get('dni')?.hasError('minlength') || form.get('dni')?.hasError('maxlength')">
+                    El DNI debe tener 8 caracteres!!
+                </mat-error>
+                <mat-error *ngIf="form.get('dni')?.hasError('pattern')">
+                    El DNI debe contener solo números!!
+                </mat-error>
+            </mat-form-field>
+            <br />
+            <button matButton="elevated">Registrar</button>
+        </form>
+    </div>
+</div>
