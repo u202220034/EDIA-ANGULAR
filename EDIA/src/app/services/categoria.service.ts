@@ -25,4 +25,13 @@ export class CategoriaService {
   setList(listaNueva: Categoria[]) {
     this.listaCambio.next(listaNueva);
   }
+  listId(id:number){
+    return this.http.get<Categoria>(`${this.url}/${id}`)
+  }
+  update(c:Categoria){
+    return this.http.put(this.url, c)
+  }
+  deleteA(id:number){
+    return this.http.delete(`${this.url}/${id}`)
+  }
 }
