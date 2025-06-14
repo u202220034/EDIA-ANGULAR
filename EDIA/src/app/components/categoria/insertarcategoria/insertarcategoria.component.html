@@ -1,16 +1,30 @@
-<div>
-  <div><h1>Registro de Categorias</h1></div>
-  <div>
-    <form [formGroup]="form" (submit)="aceptar()">
-      <mat-form-field>
-        <mat-label>Categorias</mat-label>
-        <input matInput formControlName="nombre" />
-        <mat-error *ngIf="form.get('nombre')?.hasError('required')">
-          El nombre es obligatorio!!
-        </mat-error>
-      </mat-form-field>
-      <br>
-      <button matButton="elevated">Registrar</button>
-    </form>
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <div>
+      <h1>{{ edicion ? "Editar Categoría" : "Registro de Categorías" }}</h1>
+    </div>
+    <div>
+      <div style="text-align: center; margin: 5%">
+        <form [formGroup]="form" (submit)="aceptar()">
+          <mat-form-field *ngIf="edicion">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="codigo" />
+            <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+              El código es obligatorio!!
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Categorias</mat-label>
+            <input matInput formControlName="nombre" />
+            <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+              El nombre es obligatorio!!
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <button matButton="elevated">{{ edicion ? 'Editar' : 'Registrar' }}</button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
