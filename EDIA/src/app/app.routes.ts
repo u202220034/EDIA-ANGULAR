@@ -23,6 +23,10 @@ export const routes: Routes = [
         children: [
             {
                 path: 'nuevo',component: InsertarusuarioComponent
+            },
+            {
+                path:'actualizacion/:id',component: InsertarusuarioComponent
+
             }
         ] 
     },

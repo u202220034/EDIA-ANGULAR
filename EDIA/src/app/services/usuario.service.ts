@@ -27,4 +27,13 @@ export class UsuarioService {
   setList(listaNueva: Usuario[]) {
     this.listaUsuarioCambio.next(listaNueva);
   }
+  listId(id: number) {
+    return this.http.get<Usuario>(`${this.url}/${id}`);
+  }
+  update(u: Usuario) {
+    return this.http.put(this.url, u);
+  }
+  deleteA(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }

@@ -1,5 +1,5 @@
 <div>
-    <div> <h1>Registro de Usuario</h1></div>
+    <div> <h1>{{ actualizar ? "Actualizar Uusuario" : "Registro de Usuario"}}</h1></div>
     <div>
         <form [formGroup]="form" (submit)="aceptar()">
             <mat-form-field>
@@ -59,7 +59,7 @@
                 </mat-error>
             </mat-form-field>
             <br />
-            <button matButton="elevated">Registrar</button>
+            <button matButton="elevated">{{ actualizar ? "Actualizar Uusuario" : "Registro de Usuario"}}</button>
         </form>
     </div>
 </div>
