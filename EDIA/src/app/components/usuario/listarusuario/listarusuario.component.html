@@ -7,9 +7,6 @@
     <div>
     <div style="text-align: center; margin: 5%"></div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
           
             <!-- Position Column -->
             <ng-container matColumnDef="c1">
@@ -17,46 +14,29 @@
               <td mat-cell *matCellDef="let element"> {{element.idUsuario}} </td>
             </ng-container>
           
-            <!-- Name Column -->
-            <ng-container matColumnDef="c2">
-              <th mat-header-cell *matHeaderCellDef> Username </th>
-              <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
-            </ng-container>
-          
-            <!-- Weight Column -->
-            <ng-container matColumnDef="c3">
-              <th mat-header-cell *matHeaderCellDef> Password </th>
-              <td mat-cell *matCellDef="let element"> {{element.password}} </td>
-            </ng-container>
-          
             <!-- Symbol Column -->
-            <ng-container matColumnDef="c4">
+            <ng-container matColumnDef="c3">
               <th mat-header-cell *matHeaderCellDef> Nombre </th>
               <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
             </ng-container>
             <!-- Symbol Column -->
-            <ng-container matColumnDef="c5">
+            <ng-container matColumnDef="c4">
                 <th mat-header-cell *matHeaderCellDef> Apellidos </th>
                 <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
               </ng-container>
               <!-- Symbol Column -->
-            <ng-container matColumnDef="c6">
+            <ng-container matColumnDef="c5">
                 <th mat-header-cell *matHeaderCellDef> Correo </th>
                 <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
               </ng-container>
 
-            <ng-container matColumnDef="c7">
+            <ng-container matColumnDef="c6">
                 <th mat-header-cell *matHeaderCellDef> DNI </th>
                 <td mat-cell *matCellDef="let element"> {{element.dni}} </td>
               </ng-container>
 
-            <ng-container matColumnDef="c8">
-                <th mat-header-cell *matHeaderCellDef> Verificacion </th>
-                <td mat-cell *matCellDef="let element"> {{element.verificacion}} </td>
-              </ng-container>
-
             <!-- Symbol Column -->
-            <ng-container matColumnDef="c9">
+            <ng-container matColumnDef="c8">
               <th mat-header-cell *matHeaderCellDef>Actualizar</th>
               <td mat-cell *matCellDef="let element">
                 <button matButton [routerLink]="['actualizacion', element.idUsuario]">
@@ -65,7 +45,7 @@
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="c10">
+            <ng-container matColumnDef="c9">
               <th mat-header-cell *matHeaderCellDef>Eliminar</th>
               <td mat-cell *matCellDef="let element">
                 <button matButton class="btn-eliminar" (click)="eliminar(element.idUsuario)">
@@ -73,11 +53,64 @@
                 </button>
               </td>
             </ng-container>
+
+            <ng-container matColumnDef="c10">
+              <th mat-header-cell *matHeaderCellDef> Ver Detalle </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-button color="primary" (click)="verDetalle(element)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+
+            <div *ngIf="detalleSeleccionado" class="detalle-container" style="margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+        <h3>Detalle del Usuario</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div>
+            <strong>ID: </strong>
+            <span>{{ detalleSeleccionado?.idUsuario }}</span>
+          </div>
           
+          <div>
+            <strong>Username: </strong>
+            <span>{{ detalleSeleccionado?.usuario }}</span>
+          </div>
+
+          <div>
+            <strong>Nombre: </strong>
+            <span>{{ detalleSeleccionado?.nombre }}</span>
+          </div>
           
+          <div>
+            <strong>Apellidos: </strong>
+            <span>{{ detalleSeleccionado?.apellidos }}</span>
+          </div>
+
+
+          <div>
+            <strong>Correo: </strong>
+            <span>{{ detalleSeleccionado?.correo }}</span>
+          </div>
+
+          <div>
+            <strong>DNI: </strong>
+            <span>{{ detalleSeleccionado?.dni }}</span>
+          </div>
+
+          <div>
+            <strong>Estado de Verificación: </strong>
+            <span>{{ detalleSeleccionado?.verificacion ? 'Activo' : 'Inactivo' }}</span>
+          </div>
+
+          <button mat-raised-button color="primary" (click)="cerrarDetalle()" style="align-self: flex-end;">
+            Cerrar
+          </button>
+        </div>
+      </div>
     </div>
 </div>

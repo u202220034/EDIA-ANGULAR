@@ -1,14 +1,22 @@
 <div class="container">
   <div style="text-align: center; margin: 5%"> 
     <div>
-    <h1>{{ actualizar ? "Actualizar Uusuario" : "Registro de Usuario"}}</h1>
+    <h1>{{ actualizar ? "Actualizar Usuario" : "Registro de Usuario"}}</h1>
     </div>
     <div>
-        <div style="text-align: center; margin: 5%"></div>
+        <div style="text-align: center; margin: 5%">
             <form [formGroup]="form" (submit)="aceptar()">
+                <mat-form-field *ngIf="actualizar">
+                    <mat-label>ID</mat-label>
+                    <input matInput formControlName="codigo" />
+                    <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+                        El código es obligatorio!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
                 <mat-form-field>
                     <mat-label>Usuario</mat-label>
-                    <input matInput formControlName="usuario" />
+                    <input matInput formControlName="usuario"/>
                     <mat-error *ngIf="form.get('usuario')?.hasError('required')">
                         El usuario es obligatorio!!
                     </mat-error>
@@ -63,7 +71,7 @@
                     </mat-error>
                 </mat-form-field>
                 <br />
-                <button matButton="elevated">{{ actualizar ? "Actualizar Uusuario" : "Registro de Usuario"}}</button>
+                <button mat-raised-button>{{ actualizar ? "Actualizar Usuario" : "Registro de Usuario"}}</button>
             </form>
         </div>
     </div>
