@@ -40,7 +40,9 @@ export class InsertarusuarioComponent implements OnInit {
       // Si es actualizar, inicializar el formulario con los datos del usuario
       this.init();
     });
+
     this.form = this.formBuilder.group({
+      codigo: [''],
       usuario: ['', Validators.required],
       password: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -51,6 +53,7 @@ export class InsertarusuarioComponent implements OnInit {
   }
   aceptar(){
     if (this.form.valid) {
+      this.usuario.idUsuario = this.form.value.codigo;
       this.usuario.usuario = this.form.value.usuario;
       this.usuario.password = this.form.value.password;
       this.usuario.nombre = this.form.value.nombre;
@@ -81,6 +84,7 @@ export class InsertarusuarioComponent implements OnInit {
     if (this.actualizar) {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
+          codigo: new FormControl(data.idUsuario),
           usuario: new FormControl(data.usuario, Validators.required),
           password: new FormControl(data.password, Validators.required),
           nombre: new FormControl(data.nombre, Validators.required),
@@ -91,6 +95,4 @@ export class InsertarusuarioComponent implements OnInit {
       });
     }
   }
-
-
 }

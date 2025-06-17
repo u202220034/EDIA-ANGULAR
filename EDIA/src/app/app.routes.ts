@@ -21,15 +21,15 @@ export const routes: Routes = [
     },
     {
         path:'usuario', component: UsuarioComponent,
-        children: [
-            {
-                path: 'nuevo',component: InsertarusuarioComponent
-            },
-            {
-                path:'actualizacion/:id',component: InsertarusuarioComponent
+            children: [
+                {
+                    path: 'nuevo',component: InsertarusuarioComponent
+                },
+                {
+                    path:'actualizacion/:id',component: InsertarusuarioComponent
 
-            }
-        ] 
+                }
+            ] 
     },
     {
         path:'tipo', component: TipoactividadComponent,
