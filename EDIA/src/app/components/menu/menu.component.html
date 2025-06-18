@@ -1,0 +1,44 @@
+<mat-toolbar class="custom-toolbar">  
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">   
+      <mat-icon>person</mat-icon>  
+      Usuarios   
+     </button>   
+    </div> 
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuCategorias" class="btn-rojo">   
+      <mat-icon>poll</mat-icon>   
+      Categorias   
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuDesafioTemps" class="btn-rojo">   
+      <mat-icon>grade</mat-icon>   
+      Desafios Temporales   
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoActividades" class="btn-rojo">   
+      <mat-icon>poll</mat-icon>   
+      Tipos de Actividades 
+     </button>   
+    </div>         
+</mat-toolbar>   
+
+<mat-menu #menuUsuarios="matMenu">  
+    <button mat-menu-item routerLink="/usuario">Listar</button>   
+    <button mat-menu-item routerLink="/usuario/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuCategorias="matMenu">  
+    <button mat-menu-item routerLink="/categoria">Listar</button>   
+    <button mat-menu-item routerLink="/categoria/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuDesafioTemps="matMenu">  
+    <button mat-menu-item routerLink="/desafiotemporal">Listar</button>   
+    <button mat-menu-item routerLink="/desafiotemporal/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuTipoActividades="matMenu">  
+    <button mat-menu-item routerLink="/tipo">Listar</button>   
+    <button mat-menu-item routerLink="/tipo/nuevo">Registrar</button>
+</mat-menu>
+

@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { TipoactividadComponent } from "./components/tipoactividad/tipoactividad.component";
-import { CategoriaComponent } from "./components/categoria/categoria.component";
-import { DesafiotempComponent } from "./components/desafiotemp/desafiotemp.component";
+import { MenuComponent } from "./components/menu/menu.component";
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [UsuarioComponent, CategoriaComponent, TipoactividadComponent, DesafiotempComponent],
+  imports: [MenuComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
