@@ -9,6 +9,9 @@ import { InsertareditardesafiotempComponent } from './components/desafiotemp/ins
 
 export const routes: Routes = [
     {
+        path:'',redirectTo:'usuarios',pathMatch:'full'
+    },
+    {
        path:'categoria',component:CategoriaComponent,
         children:[
             {
