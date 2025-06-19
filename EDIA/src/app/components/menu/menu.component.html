@@ -47,11 +47,30 @@
       Usuario-Desafios 
      </button>   
     </div>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuProyectos" class="btn-rojo">   
+      <mat-icon> note </mat-icon>  
+      Proyectos 
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoUsuarios" class="btn-rojo">   
+      <mat-icon> supervised_user_circle </mat-icon>  
+      Tipos de Usuarios 
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoUsuariosusus" class="btn-rojo">   
+      <mat-icon> verified_user </mat-icon>  
+      Asignaciones de Tipos de Usuarios con los Usuarios 
+     </button>   
+    </div>              
 </mat-toolbar>   
 
 <mat-menu #menuUsuarios="matMenu">  
-    <button mat-menu-item routerLink="/usuario">Listar</button>   
-    <button mat-menu-item routerLink="/usuario/nuevo">Registrar</button>
+    <button mat-menu-item routerLink="/usuarios">Listar</button>   
+    <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
 </mat-menu>
 <mat-menu #menuCategorias="matMenu">  
     <button mat-menu-item routerLink="/categoria">Listar</button>   
@@ -76,4 +95,14 @@
 </mat-menu>
 <mat-menu #menuUsuarioDesafio="matMenu">  
     <button mat-menu-item routerLink="/usuariosdesafios">Listar</button>     
+</mat-menu>
+<mat-menu #menuProyectos="matMenu">  
+    <button mat-menu-item routerLink="/proyecto">Listar</button>     
+</mat-menu>
+<mat-menu #menuTipoUsuarios="matMenu">  
+    <button mat-menu-item routerLink="/tipousuarios">Listar</button>
+    <button mat-menu-item routerLink="/tipousuarios/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuTipoUsuariosusus="matMenu">  
+    <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
 </mat-menu>

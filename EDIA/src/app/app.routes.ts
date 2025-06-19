@@ -10,6 +10,12 @@ import { CursoComponent } from './components/curso/curso.component';
 import { UsuariocursoComponent } from './components/usuariocurso/usuariocurso.component';
 import { LeccionesComponent } from './components/lecciones/lecciones.component';
 import { UsuariodesafioComponent } from './components/usuariodesafio/usuariodesafio.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
+import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
+import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
+import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
+
 
 export const routes: Routes = [
     {
@@ -27,10 +33,10 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'usuario', component: UsuarioComponent,
+        path:'usuarios', component: UsuarioComponent,
             children: [
                 {
-                    path: 'nuevo',component: InsertarusuarioComponent
+                    path:'nuevo',component: InsertarusuarioComponent
                 },
                 {
                     path:'actualizacion/:id',component: InsertarusuarioComponent
@@ -40,6 +46,14 @@ export const routes: Routes = [
     },
     {
         path:'tipo', component: TipoactividadComponent,
+            children:[
+                {
+                    path:'nuevo',component: InsertartipoactividadComponent
+                },
+                {
+                    path:'ediciones/:id',component:InsertartipoactividadComponent
+                },
+            ]
     },
     {
         path:'desafiotemporal',component:DesafiotempComponent,
@@ -63,5 +77,22 @@ export const routes: Routes = [
     },
     {
         path:'usuariosdesafios',component:UsuariodesafioComponent
-    }
+    },
+        path:'proyecto',component:ProyectoComponent
+    },
+    {
+        path:'tipousuarios',component:TipousuarioComponent,
+        children: [
+                {
+                    path:'nuevo',component: InsertartipousuarioComponent
+                },
+                {
+                    path:'actualizacion/:id',component: InsertartipousuarioComponent
+
+                }
+            ] 
+    },
+    {
+        path:'tipousuariosusus',component: TipousuariousuComponent
+    },
 ];

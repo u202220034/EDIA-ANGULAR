@@ -4,7 +4,6 @@ import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { MatFormField, MatLabel } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,9 +12,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     MatTableModule, 
     MatIconModule, 
-    RouterLink, 
-    MatFormField, 
-    MatLabel
+    RouterLink
   ],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css'
