@@ -41,6 +41,12 @@
       Lecciones 
      </button>   
     </div>   
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarioDesafio" class="btn-rojo">   
+      <mat-icon> class</mat-icon>  
+      Usuario-Desafios 
+     </button>   
+    </div>   
 </mat-toolbar>   
 
 <mat-menu #menuUsuarios="matMenu">  
@@ -67,4 +73,7 @@
 </mat-menu>
 <mat-menu #menuLecciones="matMenu">  
     <button mat-menu-item routerLink="/lecciones">Listar</button>     
+</mat-menu>
+<mat-menu #menuUsuarioDesafio="matMenu">  
+    <button mat-menu-item routerLink="/usuariosdesafios">Listar</button>     
 </mat-menu>

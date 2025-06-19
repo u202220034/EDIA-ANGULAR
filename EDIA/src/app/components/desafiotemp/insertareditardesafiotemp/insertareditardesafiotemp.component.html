@@ -2,6 +2,7 @@
   <div style="text-align: center; margin: 5%">
     <h1>{{ edicion ? "Actualizar" : "Registrar" }}</h1>
   </div>
+
   <div style="text-align: center; margin: 5%">
     <form [formGroup]="form" (submit)="aceptar()">
       <mat-form-field *ngIf="edicion">
@@ -43,10 +44,14 @@
         </mat-error>
       </mat-form-field>
       <br />
-      
+
       <mat-form-field>
         <mat-label>Elija fecha fin</mat-label>
-        <input matInput [matDatepicker]="pickerfin" formControlName="fechaCul" />
+        <input
+          matInput
+          [matDatepicker]="pickerfin"
+          formControlName="fechaCul"
+        />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="pickerfin">
         </mat-datepicker-toggle>
@@ -55,8 +60,15 @@
           La fecha es obligatoria!!
         </mat-error>
       </mat-form-field>
+      <div
+        *ngIf="form.errors?.['fechasInvalidas'] && form.touched"style="color: red">
+        La fecha de inicio no puede ser mayor que la fecha de fin.
+      </div>
+
       <br />
-      <button matButton="elevated">{{ edicion ? "Actualizar" : "Registrar" }}</button>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">
+        {{ edicion ? "Actualizar" : "Registrar" }}
+      </button>
     </form>
   </div>
 </div>
