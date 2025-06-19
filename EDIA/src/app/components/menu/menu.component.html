@@ -22,7 +22,25 @@
       <mat-icon>poll</mat-icon>   
       Tipos de Actividades 
      </button>   
-    </div>         
+    </div> 
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuCursos" class="btn-rojo">   
+      <mat-icon>computer</mat-icon>  
+      Cursos   
+     </button>   
+    </div>      
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarioCursos" class="btn-rojo">   
+      <mat-icon>wc</mat-icon>  
+      Usuario-Cursos   
+     </button>   
+    </div>     
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuLecciones" class="btn-rojo">   
+      <mat-icon> local_activity</mat-icon>  
+      Lecciones 
+     </button>   
+    </div>   
 </mat-toolbar>   
 
 <mat-menu #menuUsuarios="matMenu">  
@@ -41,4 +59,12 @@
     <button mat-menu-item routerLink="/tipo">Listar</button>   
     <button mat-menu-item routerLink="/tipo/nuevo">Registrar</button>
 </mat-menu>
-
+<mat-menu #menuCursos="matMenu">  
+    <button mat-menu-item routerLink="/curso">Listar</button>     
+</mat-menu>
+<mat-menu #menuUsuarioCursos="matMenu">  
+    <button mat-menu-item routerLink="/usuarioscursos">Listar</button>     
+</mat-menu>
+<mat-menu #menuLecciones="matMenu">  
+    <button mat-menu-item routerLink="/lecciones">Listar</button>     
+</mat-menu>
