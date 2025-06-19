@@ -77,7 +77,7 @@ export class InsertarusuarioComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['usuario']);
+      this.router.navigate(['usuarios']);
     }
   }
   init(){

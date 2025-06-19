@@ -9,6 +9,9 @@ import { InsertareditardesafiotempComponent } from './components/desafiotemp/ins
 import { CursoComponent } from './components/curso/curso.component';
 import { UsuariocursoComponent } from './components/usuariocurso/usuariocurso.component';
 import { LeccionesComponent } from './components/lecciones/lecciones.component';
+import { ProyectoComponent } from './components/proyecto/proyecto.component';
+import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
+import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
 
 export const routes: Routes = [
     {
@@ -26,10 +29,10 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'usuario', component: UsuarioComponent,
+        path:'usuarios', component: UsuarioComponent,
             children: [
                 {
-                    path: 'nuevo',component: InsertarusuarioComponent
+                    path:'nuevo',component: InsertarusuarioComponent
                 },
                 {
                     path:'actualizacion/:id',component: InsertarusuarioComponent
@@ -59,5 +62,20 @@ export const routes: Routes = [
     },
     {
         path:'lecciones',component:LeccionesComponent
+    },
+    {
+        path:'proyecto',component:ProyectoComponent
+    },
+    {
+        path:'tipousuarios',component:TipousuarioComponent,
+        children: [
+                {
+                    path:'nuevo',component: InsertartipousuarioComponent
+                },
+                {
+                    path:'actualizacion/:id',component: InsertartipousuarioComponent
+
+                }
+            ] 
     }
 ];
