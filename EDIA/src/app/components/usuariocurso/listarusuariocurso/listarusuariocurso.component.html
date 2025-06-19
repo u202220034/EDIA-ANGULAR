@@ -1,41 +1,38 @@
 <div class="container">
   <div style="text-align: center; margin: 5%">
-    <h1>Lista de Categorias</h1>
+    <h1>Lista de Usuarios-Cursos</h1>
   </div>
+
   <div style="text-align: center; margin: 5%">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-
       <!-- Position Column -->
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let element">{{ element.idCategoria }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.idUsuarioCurso }}</td>
       </ng-container>
-
-      <!-- Name Column -->
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>nombreCategoria</th>
+        <th mat-header-cell *matHeaderCellDef>Fecha de inicio</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.nombreCategoria }}
+          {{ element.fechaInicio | date : "dd/MM/yyyy" }}
         </td>
       </ng-container>
       <!-- Symbol Column -->
       <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+        <th mat-header-cell *matHeaderCellDef>Estado del curso</th>
+        <td mat-cell *matCellDef="let element">{{ element.estadoCurso }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <!-- Weight Column -->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Nombre del Usuario</th>
         <td mat-cell *matCellDef="let element">
-          <button matButton [routerLink]="['ediciones', element.idCategoria]">
-            <mat-icon>edit</mat-icon>
-          </button>
+          {{ element.usuario.usuario }}
         </td>
       </ng-container>
-
-      <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <ng-container matColumnDef="c5">
+        <th mat-header-cell *matHeaderCellDef>Nombre del curso</th>
         <td mat-cell *matCellDef="let element">
-          <button matButton class="btn-eliminar" (click)="eliminar(element.idCategoria)">
-            <mat-icon>delete</mat-icon>
-          </button>
+          {{ element.curso.nombreCurso }}
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

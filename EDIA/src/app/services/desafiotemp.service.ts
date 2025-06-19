@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Categoria } from '../models/categoria';
+import { DesafioTemporal } from '../models/desafiotemp';
 import { Subject } from 'rxjs';
+
 const base_url = environment.base
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriaService {
+export class DesafiotempService {
 
-  private url = `${base_url}/categoria`
-  private listaCambio = new Subject<Categoria[]>();
+  private url = `${base_url}/desafiotemporal`
+  private listaCambio = new Subject<DesafioTemporal[]>();
   constructor(private http: HttpClient) { }
-
-  list() {
-    return this.http.get<Categoria[]>(this.url)
+  list(){
+    return this.http.get<DesafioTemporal[]>(this.url)
   }
-  insert(a: Categoria) {
+  insert(a: DesafioTemporal) {
     return this.http.post(this.url, a);
   }
   getList() {
     return this.listaCambio.asObservable();
   }
-  setList(listaNueva: Categoria[]) {
+  setList(listaNueva: DesafioTemporal[]) {
     this.listaCambio.next(listaNueva);
   }
-  listId(id:number){
-    return this.http.get<Categoria>(`${this.url}/${id}`)
+
+  listId(id: number) {
+    return this.http.get<DesafioTemporal>(`${this.url}/${id}`)
   }
-  update(c:Categoria){
-    return this.http.put(this.url, c)
+  update(a: DesafioTemporal) {
+    return this.http.put(this.url, a)
   }
   deleteA(id:number){
     return this.http.delete(`${this.url}/${id}`)
