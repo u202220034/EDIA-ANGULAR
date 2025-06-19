@@ -1,0 +1,29 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%"> 
+    <div>
+    <h1>{{ actualizar ? "Actualizar Tipo Usuario" : "Registro de Tipo Usuario"}}</h1>
+    </div>
+    <div>
+        <div style="text-align: center; margin: 5%">
+            <form [formGroup]="form" (submit)="aceptar()">
+                <mat-form-field *ngIf="actualizar">
+                    <mat-label>ID</mat-label>
+                    <input matInput formControlName="codigo" />
+                    <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+                        El código es obligatorio!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Tipo Usuario</mat-label>
+                    <input matInput formControlName="nombreTipoUsuario"/>
+                    <mat-error *ngIf="form.get('nombreTipoUsuario')?.hasError('required')">
+                        El tipo de usuario es obligatorio!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
+                <button mat-raised-button>{{ actualizar ? "Actualizar Tipo Usuario" : "Registro de Tipo Usuario"}}</button>
+            </form>
+        </div>
+    </div>
+</div>
