@@ -78,6 +78,7 @@ export const routes: Routes = [
     {
         path:'usuariosdesafios',component:UsuariodesafioComponent
     },
+    {
         path:'proyecto',component:ProyectoComponent
     },
     {
