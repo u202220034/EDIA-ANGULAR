@@ -40,6 +40,13 @@
       <mat-icon> local_activity</mat-icon>  
       Lecciones 
      </button>   
+    </div>   
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarioDesafio" class="btn-rojo">   
+      <mat-icon> class</mat-icon>  
+      Usuario-Desafios 
+     </button>   
+    </div>   
     </div>
     <div>   
      <button mat-button [matMenuTriggerFor]="menuProyectos" class="btn-rojo">   
@@ -85,6 +92,9 @@
 </mat-menu>
 <mat-menu #menuLecciones="matMenu">  
     <button mat-menu-item routerLink="/lecciones">Listar</button>     
+</mat-menu>
+<mat-menu #menuUsuarioDesafio="matMenu">  
+    <button mat-menu-item routerLink="/usuariosdesafios">Listar</button>     
 </mat-menu>
 <mat-menu #menuProyectos="matMenu">  
     <button mat-menu-item routerLink="/proyecto">Listar</button>     
