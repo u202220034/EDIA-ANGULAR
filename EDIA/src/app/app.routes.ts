@@ -13,6 +13,7 @@ import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
 import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
+import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
 
 export const routes: Routes = [
     {
@@ -43,6 +44,14 @@ export const routes: Routes = [
     },
     {
         path:'tipo', component: TipoactividadComponent,
+            children:[
+                {
+                    path:'nuevo',component: InsertartipoactividadComponent
+                },
+                {
+                    path:'ediciones/:id',component:InsertartipoactividadComponent
+                },
+            ]
     },
     {
         path:'desafiotemporal',component:DesafiotempComponent,
