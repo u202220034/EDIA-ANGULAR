@@ -6,6 +6,9 @@ import { InsertarusuarioComponent } from './components/usuario/insertarusuario/i
 import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
 import { DesafiotempComponent } from './components/desafiotemp/desafiotemp.component';
 import { InsertareditardesafiotempComponent } from './components/desafiotemp/insertareditardesafiotemp/insertareditardesafiotemp.component';
+import { CursoComponent } from './components/curso/curso.component';
+import { UsuariocursoComponent } from './components/usuariocurso/usuariocurso.component';
+import { LeccionesComponent } from './components/lecciones/lecciones.component';
 
 export const routes: Routes = [
     {
@@ -47,6 +50,14 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:InsertareditardesafiotempComponent
             }
         ]
+    },
+    {
+        path:'curso',component:CursoComponent
+    },
+    {
+        path:'usuarioscursos',component:UsuariocursoComponent
+    },
+    {
+        path:'lecciones',component:LeccionesComponent
     }
-    
 ];
