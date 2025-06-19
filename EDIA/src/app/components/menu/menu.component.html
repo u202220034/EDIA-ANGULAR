@@ -52,7 +52,13 @@
       <mat-icon> supervised_user_circle </mat-icon>  
       Tipos de Usuarios 
      </button>   
-    </div>           
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoUsuariosusus" class="btn-rojo">   
+      <mat-icon> verified_user </mat-icon>  
+      Asignaciones de Tipos de Usuarios con los Usuarios 
+     </button>   
+    </div>              
 </mat-toolbar>   
 
 <mat-menu #menuUsuarios="matMenu">  
@@ -86,4 +92,7 @@
 <mat-menu #menuTipoUsuarios="matMenu">  
     <button mat-menu-item routerLink="/tipousuarios">Listar</button>
     <button mat-menu-item routerLink="/tipousuarios/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuTipoUsuariosusus="matMenu">  
+    <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
 </mat-menu>

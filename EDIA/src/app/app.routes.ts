@@ -12,6 +12,7 @@ import { LeccionesComponent } from './components/lecciones/lecciones.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
+import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
 
 export const routes: Routes = [
     {
@@ -77,5 +78,8 @@ export const routes: Routes = [
 
                 }
             ] 
-    }
+    },
+    {
+        path:'tipousuariosusus',component: TipousuariousuComponent
+    },
 ];
