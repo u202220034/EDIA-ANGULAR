@@ -1,0 +1,30 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <div>
+      <h1>{{ edicion ? "Editar Tipo de Actividad" : "Registro de Tipo de actividad" }}</h1>
+    </div>
+    <div>
+      <div style="text-align: center; margin: 5%">
+        <form [formGroup]="form" (submit)="aceptar()">
+          <mat-form-field *ngIf="edicion">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="codigo" />
+            <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+              El código es obligatorio!!
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>TipoActividad</mat-label>
+            <input matInput formControlName="nombre" />
+            <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+              El nombre es obligatorio!!
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <button mat-raised-button>{{ edicion ? 'Editar' : 'Registrar' }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

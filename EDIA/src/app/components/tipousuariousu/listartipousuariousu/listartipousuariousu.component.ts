@@ -20,5 +20,8 @@ export class ListartipousuariousuComponent implements OnInit{
     this.tuuS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     });
+    this.tuuS.getList().subscribe((data) => {
+      this.dataSource = new MatTableDataSource(data);
+    });
   }
 }

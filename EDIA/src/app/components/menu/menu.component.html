@@ -1,3 +1,4 @@
+
 <mat-toolbar class="custom-toolbar">
   <div>
     <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">
@@ -69,6 +70,76 @@
   </div>
 </mat-toolbar>
 
+<mat-toolbar class="custom-toolbar">  
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarios" class="btn-rojo">   
+      <mat-icon>person</mat-icon>  
+      Usuarios   
+     </button>   
+    </div> 
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuCategorias" class="btn-rojo">   
+      <mat-icon>poll</mat-icon>   
+      Categorias   
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuDesafioTemps" class="btn-rojo">   
+      <mat-icon>grade</mat-icon>   
+      Desafios Temporales   
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoActividades" class="btn-rojo">   
+      <mat-icon>poll</mat-icon>   
+      Tipos de Actividades 
+     </button>   
+    </div> 
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuCursos" class="btn-rojo">   
+      <mat-icon>computer</mat-icon>  
+      Cursos   
+     </button>   
+    </div>      
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarioCursos" class="btn-rojo">   
+      <mat-icon>wc</mat-icon>  
+      Usuario-Cursos   
+     </button>   
+    </div>     
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuLecciones" class="btn-rojo">   
+      <mat-icon> local_activity</mat-icon>  
+      Lecciones 
+     </button>   
+    </div>   
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuUsuarioDesafio" class="btn-rojo">   
+      <mat-icon> class</mat-icon>  
+      Usuario-Desafios 
+     </button>   
+    </div>   
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuProyectos" class="btn-rojo">   
+      <mat-icon> note </mat-icon>  
+      Proyectos 
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoUsuarios" class="btn-rojo">   
+      <mat-icon> supervised_user_circle </mat-icon>  
+      Tipos de Usuarios 
+     </button>   
+    </div>
+    <div>   
+     <button mat-button [matMenuTriggerFor]="menuTipoUsuariosusus" class="btn-rojo">   
+      <mat-icon> verified_user </mat-icon>  
+      Asignaciones de Tipos de Usuarios con los Usuarios 
+     </button>   
+    </div>              
+</mat-toolbar>   
+
+
 <mat-menu #menuUsuarios="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
@@ -96,13 +167,28 @@
   <button mat-menu-item routerLink="/lecciones">Listar</button>
   <button mat-menu-item routerLink="/lecciones/Insercciones">Registrar</button>
 </mat-menu>
+
 <mat-menu #menuProyectos="matMenu">
   <button mat-menu-item routerLink="/proyecto">Listar</button>
+
+<mat-menu #menuUsuarioDesafio="matMenu">  
+    <button mat-menu-item routerLink="/usuariosdesafios">Listar</button>     
+</mat-menu>
+<mat-menu #menuProyectos="matMenu">  
+    <button mat-menu-item routerLink="/proyectos">Listar</button>
+    <button mat-menu-item routerLink="/proyectos/nuevo">Registrar</button>
+
 </mat-menu>
 <mat-menu #menuTipoUsuarios="matMenu">
   <button mat-menu-item routerLink="/tipousuarios">Listar</button>
   <button mat-menu-item routerLink="/tipousuarios/nuevo">Registrar</button>
 </mat-menu>
+
 <mat-menu #menuTipoUsuariosusus="matMenu">
   <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
+
+<mat-menu #menuTipoUsuariosusus="matMenu">  
+    <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
+    <button mat-menu-item routerLink="/tipousuariosusus/nuevo">Registrar</button>
+
 </mat-menu>

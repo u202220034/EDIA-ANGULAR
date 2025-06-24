@@ -9,12 +9,20 @@ import { InsertareditardesafiotempComponent } from './components/desafiotemp/ins
 import { CursoComponent } from './components/curso/curso.component';
 import { UsuariocursoComponent } from './components/usuariocurso/usuariocurso.component';
 import { LeccionesComponent } from './components/lecciones/lecciones.component';
+import { UsuariodesafioComponent } from './components/usuariodesafio/usuariodesafio.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
 import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
+
 import { InsertareditarcursoComponent } from './components/curso/insertareditarcurso/insertareditarcurso.component';
 import { InsertareditarleccionesComponent } from './components/lecciones/insertareditarlecciones/insertareditarlecciones.component';
+
+import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
+import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
+import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
+
+
 
 export const routes: Routes = [
     {
@@ -45,6 +53,14 @@ export const routes: Routes = [
     },
     {
         path:'tipo', component: TipoactividadComponent,
+            children:[
+                {
+                    path:'nuevo',component: InsertartipoactividadComponent
+                },
+                {
+                    path:'ediciones/:id',component:InsertartipoactividadComponent
+                },
+            ]
     },
     {
         path:'desafiotemporal',component:DesafiotempComponent,
@@ -77,7 +93,15 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'proyecto',component:ProyectoComponent
+        path:'usuariosdesafios',component:UsuariodesafioComponent
+    },
+    {
+        path:'proyectos',component:ProyectoComponent,
+        children: [
+            {
+                path:'nuevo',component:InsertarproyectoComponent
+            }
+        ]
     },
     {
         path:'tipousuarios',component:TipousuarioComponent,
@@ -92,6 +116,11 @@ export const routes: Routes = [
             ] 
     },
     {
-        path:'tipousuariosusus',component: TipousuariousuComponent
+        path:'tipousuariosusus',component: TipousuariousuComponent,
+        children: [
+            {
+                path:'nuevo',component: InsertartipousuariousuComponent
+            }
+        ]
     },
 ];

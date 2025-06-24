@@ -1,0 +1,6 @@
+button[mat-raised-button] {
+  background-color: #259654;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+}
