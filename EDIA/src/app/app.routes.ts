@@ -16,6 +16,7 @@ import { InsertartipousuarioComponent } from './components/tipousuario/insertart
 import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
 import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
 import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
+import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
 
 
 export const routes: Routes = [
@@ -100,6 +101,11 @@ export const routes: Routes = [
             ] 
     },
     {
-        path:'tipousuariosusus',component: TipousuariousuComponent
+        path:'tipousuariosusus',component: TipousuariousuComponent,
+        children: [
+            {
+                path:'nuevo',component: InsertartipousuariousuComponent
+            }
+        ]
     },
 ];
