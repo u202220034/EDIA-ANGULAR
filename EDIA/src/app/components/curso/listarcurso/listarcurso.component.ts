@@ -19,5 +19,8 @@ export class ListarcursoComponent implements OnInit{
     this.cuS.list().subscribe((data)=>{
       this.dataSource=new MatTableDataSource(data);
     })
+    this.cuS.getList().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data)
+    })
   }
 }
