@@ -1,0 +1,68 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%"> 
+    <div>
+    <h1>{{ actualizar ? "Actualizar Proyecto" : "Registro de Proyecto"}}</h1>
+    </div>
+    <div>
+        <div style="text-align: center; margin: 5%">
+            <form [formGroup]="form" (submit)="aceptar()">
+                <mat-form-field>
+                    <mat-label>Nombre del Proyecto</mat-label>
+                    <input matInput formControlName="nombre"/>
+                    <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+                        El nombre es obligatorio!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                <mat-label>Contenido</mat-label>
+                <textarea matInput formControlName="contenido"></textarea>
+                <mat-error *ngIf="form.get('contenido')?.hasError('required')">
+                    El contenido es obligatorio!!
+                </mat-error>
+                <br />
+                </mat-form-field>
+                <br />
+
+                <mat-form-field>
+                    <mat-label>Fecha de Ultima Actualizacion</mat-label>
+                    <input matInput [matDatepicker]="pickerUlt" formControlName="fechault">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerUlt"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerUlt></mat-datepicker>
+                    <mat-error *ngIf="form.get('fechault')?.hasError('required')">
+                        La fecha de ultima actualizacion es obligatoria!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field>
+                    <mat-label>Fecha de Creacion</mat-label>
+                    <input matInput [matDatepicker]="pickerCrea" formControlName="fechacrea">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerCrea"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerCrea></mat-datepicker>
+                    <mat-error *ngIf="form.get('fechacrea')?.hasError('required')">
+                        La fecha de Creacion es obligatoria!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
+
+                <mat-form-field>
+                <mat-label>Seleccione el Usuario</mat-label>
+                <mat-select formControlName="usu">
+                    @for (food of listaUsuarios; track food) {
+                    <mat-option [value]="food.idUsuario">{{food.usuario}}</mat-option>
+                    }
+                </mat-select>
+                <mat-error *ngIf="form.get('usu')?.hasError('required')">
+                    El usuario es obligatoria!!
+                </mat-error>
+                </mat-form-field>
+                <br />
+                <button mat-raised-button>{{ actualizar ? "Actualizar Proyecto" : "Registro de Proyecto"}}</button>
+            </form>
+        </div>
+    </div>
+</div>
+
