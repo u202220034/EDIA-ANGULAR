@@ -14,9 +14,14 @@ import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
 import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
+
+import { InsertareditarcursoComponent } from './components/curso/insertareditarcurso/insertareditarcurso.component';
+import { InsertareditarleccionesComponent } from './components/lecciones/insertareditarlecciones/insertareditarlecciones.component';
+
 import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
 import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
 import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
+
 
 
 export const routes: Routes = [
@@ -69,13 +74,23 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'curso',component:CursoComponent
+        path:'curso',component:CursoComponent,
+        children:[
+            {
+                path:'Inserciones',component:InsertareditarcursoComponent
+            }
+        ]
     },
     {
         path:'usuarioscursos',component:UsuariocursoComponent
     },
     {
-        path:'lecciones',component:LeccionesComponent
+        path:'lecciones',component:LeccionesComponent,
+        children:[
+            {
+                path:'Insercciones',component:InsertareditarleccionesComponent
+            }
+        ]
     },
     {
         path:'usuariosdesafios',component:UsuariodesafioComponent

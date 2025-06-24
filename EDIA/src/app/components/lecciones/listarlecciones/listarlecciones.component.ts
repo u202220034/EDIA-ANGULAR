@@ -17,5 +17,8 @@ export class ListarleccionesComponent implements OnInit {
     this.lS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
     });
+    this.lS.getList().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data)
+    })
   }
 }

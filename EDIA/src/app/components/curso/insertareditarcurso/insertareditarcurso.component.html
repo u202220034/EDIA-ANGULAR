@@ -1,0 +1,41 @@
+<div class="container">
+    <div style="text-align: center;margin: 5%;">
+        <h1>Registro de cursos</h1>
+    </div>
+    <div  style="text-align: center;margin: 5%;">
+        <form [formGroup]="form" (submit)="aceptar()">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre del curso</mat-label>
+                <input matInput placeholder="Programacion" formControlName="nombre">
+                <mat-error *ngIf="form.get('nombre')?.hasError('required')">
+                    El nombre es obligatorio!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Descripcion</mat-label>
+                <textarea matInput formControlName="descripcionCurso"></textarea>
+                <mat-error *ngIf="form.get('descripcionCurso')?.hasError('required')">
+                    La descripcion es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Seleccione categoria</mat-label>
+                <mat-select formControlName="catego">
+                    @for (food of listaCategoria; track food) {
+                    <mat-option [value]="food.idCategoria">{{food.nombreCategoria}}</mat-option>
+                    }
+                </mat-select>
+                <mat-error *ngIf="form.get('catego')?.hasError('required')">
+                    La categoria es obligatoria!!
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <button matButton="elevated">Registrar</button>
+
+
+        </form>
+    </div>
+
+</div>
