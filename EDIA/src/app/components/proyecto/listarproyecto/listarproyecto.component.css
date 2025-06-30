@@ -1,3 +1,15 @@
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* o 'flex-start' para alinearlos a la izquierda */
+  padding: 20px;
+}
+
+.mini-card {
+  width: 300px;
+}
+
 button mat-icon {
   color: white;
 }

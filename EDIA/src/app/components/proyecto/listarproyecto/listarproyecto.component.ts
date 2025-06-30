@@ -7,24 +7,25 @@ import { Proyecto } from '../../../models/proyecto';
 import { ProyectoService } from '../../../services/proyecto.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+
 
 @Component({
   selector: 'app-listarproyecto',
   imports: [    
-    MatTableModule,
+    
     CommonModule,
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
-    RouterLink
+    RouterLink,
+    MatCardModule
   ],
   templateUrl: './listarproyecto.component.html',
   styleUrl: './listarproyecto.component.css'
 })
 export class ListarproyectoComponent implements OnInit {
   dataSource: MatTableDataSource<Proyecto> = new MatTableDataSource();
-
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
