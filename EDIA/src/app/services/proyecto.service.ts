@@ -25,4 +25,13 @@ export class ProyectoService {
   setList(listaNueva: Proyecto[]) {
     this.listaCambio.next(listaNueva);
   }
+  listId(id:number){
+    return this.h.get<Proyecto>(`${this.url}/${id}`);
+  }
+  update(p:Proyecto){
+    return this.h.put(this.url, p);
+  }
+  delete(id: number) {
+    return this.h.delete(`${this.url}/${id}`);
+  }
 }

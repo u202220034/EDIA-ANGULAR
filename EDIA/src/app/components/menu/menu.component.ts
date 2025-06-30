@@ -4,6 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +14,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    RouterLink],
+    RouterLink,
+    MatPaginatorModule
+  ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
