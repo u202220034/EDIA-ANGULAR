@@ -7,6 +7,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-listarcurso',
@@ -18,6 +19,8 @@ import { RouterLink } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     RouterLink,
+    MatCardModule
+
   ],
   templateUrl: './listarcurso.component.html',
   styleUrl: './listarcurso.component.css',

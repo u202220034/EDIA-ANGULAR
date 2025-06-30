@@ -52,7 +52,7 @@
       <ng-container matColumnDef="c7">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
-          <button matButton (click)="eliminar(element.idUsuarioCurso)">
+          <button matButton class="btn-eliminar" (click)="eliminar(element.idUsuarioCurso)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
