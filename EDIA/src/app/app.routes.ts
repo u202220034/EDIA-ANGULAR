@@ -21,6 +21,7 @@ import { InsertareditarleccionesComponent } from './components/lecciones/inserta
 import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
 import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
 import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
+import { InsertareditarusuariocursoComponent } from './components/usuariocurso/insertareditarusuariocurso/insertareditarusuariocurso.component';
 
 
 
@@ -78,18 +79,32 @@ export const routes: Routes = [
         children:[
             {
                 path:'Inserciones',component:InsertareditarcursoComponent
-            }
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarcursoComponent
+            },
         ]
     },
     {
-        path:'usuarioscursos',component:UsuariocursoComponent
+        path:'usuarioscursos',component:UsuariocursoComponent,
+        children:[
+            {
+                path:'InserccionesUsuarioCurso',component:InsertareditarusuariocursoComponent,
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarusuariocursoComponent
+            },
+        ]
     },
     {
         path:'lecciones',component:LeccionesComponent,
         children:[
             {
                 path:'Insercciones',component:InsertareditarleccionesComponent
-            }
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarleccionesComponent
+            },
         ]
     },
     {
