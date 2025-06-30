@@ -22,7 +22,13 @@
             </mat-error>
           </mat-form-field>
           <br />
-          <button mat-raised-button>{{ edicion ? 'Editar' : 'Registrar' }}</button>
+          <button mat-raised-button>
+            {{ edicion ? "Editar" : "Registrar" }}
+          </button>
+          <br />
+          <button mat-button color="warn" type="button" (click)="cancelar()">
+            Cancelar
+          </button>
         </form>
       </div>
     </div>

@@ -22,7 +22,16 @@ export class LeccionesService {
   getList() {
     return this.listaCambio.asObservable();
   }
-  setList(listaNueva:Lecciones[]){
+  setList(listaNueva: Lecciones[]) {
     this.listaCambio.next(listaNueva);
+  }
+  deleteA(cbid: number) {
+    return this.h.delete(`${this.url}/${cbid}`);
+  }
+  listId(id: number) {
+    return this.h.get<Lecciones>(`${this.url}/${id}`);
+  }
+  update(a: Lecciones) {
+    return this.h.put(this.url, a);
   }
 }
