@@ -91,8 +91,8 @@ export class InsertareditarleccionesComponent implements OnInit {
       this.lS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.idLecciones),
-          nombre: new FormControl(data.titulo),
-          descripcionCurso: new FormControl(data.curso.idCurso),
+          tituloLecciones: new FormControl(data.titulo),
+          curs: new FormControl(data.curso.idCurso),
         });
       });
     }

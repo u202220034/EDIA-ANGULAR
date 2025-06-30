@@ -18,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-insertareditarcurso',
@@ -32,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
+    MatCardModule
   ],
   templateUrl: './insertareditarcurso.component.html',
   styleUrl: './insertareditarcurso.component.css',

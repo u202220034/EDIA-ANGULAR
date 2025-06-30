@@ -1,0 +1,8 @@
+.custom-card-image {
+  width: 25px;      /* o el ancho que quieras, por ejemplo 150px */
+  height: auto;      /* mantiene la proporción */
+  border-radius: 8px;  /* opcional: bordes redondeados */
+  margin: 0 auto;    /* centrado horizontalmente si la imagen es más pequeña */
+  display: block;    /* importante para que margin funcione */
+}
+
