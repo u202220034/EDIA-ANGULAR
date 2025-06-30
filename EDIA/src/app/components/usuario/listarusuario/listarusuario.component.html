@@ -67,6 +67,10 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
 
+          <div style="display: flex; justify-content: center; margin-top: 16px;">
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+          </div>
+
             <div *ngIf="detalleSeleccionado" class="detalle-container" style="margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
         <h3>Detalle del Usuario</h3>
         

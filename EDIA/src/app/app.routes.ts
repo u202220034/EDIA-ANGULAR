@@ -115,6 +115,9 @@ export const routes: Routes = [
         children: [
             {
                 path:'nuevo',component:InsertarproyectoComponent
+            },
+            {
+                path:'actualizacion/:id',component:InsertarproyectoComponent
             }
         ]
     },

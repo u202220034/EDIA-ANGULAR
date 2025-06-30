@@ -14,7 +14,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-insertarusuario',
-  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, CommonModule],
+  imports: [
+    ReactiveFormsModule, 
+    MatInputModule, 
+    MatButtonModule, 
+    CommonModule],
   templateUrl: './insertarusuario.component.html',
   styleUrl: './insertarusuario.component.css'
 })
