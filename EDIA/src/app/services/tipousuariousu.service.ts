@@ -25,4 +25,15 @@ export class TipousuariousuService {
   setList(listaNueva: TipoUsuarioUsu[]) {
     this.listaCambio.next(listaNueva);
   }
+
+  listId(id: number) {
+    return this.h.get<TipoUsuarioUsu>(`${this.url}/${id}`);
+  }
+  update(tuu: TipoUsuarioUsu) {
+    return this.h.put(`${this.url}`, tuu);
+  }
+
+  deleteA(id: number) {
+    return this.h.delete(`${this.url}/${id}`);
+  }
 }
