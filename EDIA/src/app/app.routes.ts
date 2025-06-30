@@ -138,6 +138,9 @@ export const routes: Routes = [
         children: [
             {
                 path:'nuevo',component: InsertartipousuariousuComponent
+            },
+            {
+                path:'actualizacion/:id',component: InsertartipousuariousuComponent
             }
         ]
     },
