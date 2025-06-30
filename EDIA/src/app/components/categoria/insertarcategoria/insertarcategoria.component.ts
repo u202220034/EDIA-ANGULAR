@@ -78,4 +78,7 @@ export class InsertarcategoriaComponent implements OnInit {
       });
     }
   }
+  cancelar() {
+    this.router.navigate(['categoria']);
+  }
 }

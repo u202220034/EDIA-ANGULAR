@@ -1,0 +1,88 @@
+<div class="container">
+   
+  <div style="text-align: center; margin: 5%">
+    <h1>
+      {{ edicion ? "Editar Usuario-Curso" : "Registro de Usuario-Curso" }}
+    </h1>
+  </div>
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Fecha de Inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="ucfechainicio"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('ucfechainicio')?.hasError('required')">
+          La fecha de Inicio es obligatoria!!
+        </mat-error>
+        <mat-error *ngIf="form.get('ucfechainicio')?.hasError('fechaNoEsHoy')">
+          La fecha es la de hoy!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <br />
+      
+      <mat-form-field class="example-full-width">
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="uccursoestado" />
+        <mat-error *ngIf="form.get('uccursoestado')?.hasError('required')">
+          El Estado es obligatorio!!
+        </mat-error>
+        <mat-error *ngIf="form.get('uccursoestado')?.hasError('max')">
+          El credito no puede superar 100
+        </mat-error>
+        <mat-error *ngIf="form.get('uccursoestado')?.hasError('min')">
+          El monto no puede ser menor que 0
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <br>
+      <mat-form-field>
+        <mat-label>Seleccione Usuario</mat-label>
+        <mat-select formControlName="ucusuarios">
+          @for (food of listausuario; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.nombre }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('ucusuarios')?.hasError('required')">
+          El usuario es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Seleccione Curso</mat-label>
+        <mat-select formControlName="uccursos">
+          @for (food of listacurso; track food) {
+          <mat-option [value]="food.idCurso">{{ food.nombreCurso }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('uccursos')?.hasError('required')">
+          El curso es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <button mat-raised-button>{{ edicion ? "Editar" : "Registrar" }}</button>
+    </form>
+    <br />
+    <button mat-button color="warn" type="button" (click)="cancelar()">
+      Cancelar
+    </button>
+    
+  </div>
+   </div>

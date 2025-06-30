@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { CursoService } from '../../../services/curso.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CategoriaService } from '../../../services/categoria.service';
 import { Curso } from '../../../models/curso';
 import { Categoria } from '../../../models/categoria';
@@ -30,7 +31,7 @@ import { MatInputModule } from '@angular/material/input';
     CommonModule,
     MatSelectModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
   ],
   templateUrl: './insertareditarcurso.component.html',
   styleUrl: './insertareditarcurso.component.css',
@@ -39,14 +40,25 @@ export class InsertareditarcursoComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   cur: Curso = new Curso();
   listaCategoria: Categoria[] = [];
+  id: number = 0;
+  edicion: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private cS: CursoService,
     private router: Router,
-    private caS: CategoriaService
+    private caS: CategoriaService,
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      //actualizar
+      this.init();
+    });
+
     this.form = this.formBuilder.group({
+      codigo: [''],
       nombre: ['', Validators.required],
       descripcionCurso: ['', Validators.required],
       catego: ['', Validators.required],
@@ -57,15 +69,44 @@ export class InsertareditarcursoComponent implements OnInit {
   }
   aceptar() {
     if (this.form.valid) {
+      this.cur.idCurso = this.form.value.codigo;
       this.cur.nombreCurso = this.form.value.nombre;
       this.cur.descripcion = this.form.value.descripcionCurso;
       this.cur.categoria.idCategoria = this.form.value.catego;
-      this.cS.insert(this.cur).subscribe(() => {
-        this.cS.list().subscribe((data) => {
-          this.cS.setList(data);
+      if (this.edicion) {
+        //actualizar
+        this.cS.update(this.cur).subscribe(() => {
+          this.cS.list().subscribe((data) => {
+            this.cS.setList(data);
+          });
+          this.router.navigate(['curso']); // Mueve navigate aquí para que sea después del update
+        });
+      } else {
+        //insertar
+        this.cS.insert(this.cur).subscribe(() => {
+          this.cS.list().subscribe((data) => {
+            this.cS.setList(data);
+          });
+        });
+      }
+      
+        this.router.navigate(['curso']); // Igual aquí
+   
+    }
+  }
+  init() {
+    if (this.edicion) {
+      this.cS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          codigo: new FormControl(data.idCurso),
+          nombre: new FormControl(data.nombreCurso),
+          descripcionCurso: new FormControl(data.descripcion),
+          catego: new FormControl(data.categoria.idCategoria),
         });
       });
-      this.router.navigate(['curso']);
     }
+  }
+  cancelar() {
+    this.router.navigate(['curso']);
   }
 }
