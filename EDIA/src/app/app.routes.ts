@@ -27,12 +27,17 @@ import { InsertareditarretosdesafioComponent } from './components/retosdesafio/i
 import { RetosdesafioComponent } from './components/retosdesafio/retosdesafio.component';
 import { ActividadesComponent } from './components/actividades/actividades.component';
 import { InsertareditaractividadesComponent } from './components/actividades/insertareditaractividades/insertareditaractividades.component';
+import { LandingComponent } from './components/landing/landing.component';
+
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportePorcentajeCompletoComponent } from './components/reportes/reporte-porcentaje-completo/reporte-porcentaje-completo.component';
+
 
 
 
 export const routes: Routes = [
     {
-        path:'',redirectTo:'usuarios',pathMatch:'full'
+        path:'',component:LandingComponent
     },
     {
        path:'categoria',component:CategoriaComponent,
@@ -179,4 +184,14 @@ export const routes: Routes = [
             },
         ]
     },
+
+        path:'reportes',component:ReportesComponent,
+        children:[
+            {
+                path:'PorcentajeCompleto',component:ReportePorcentajeCompletoComponent
+            }
+        ]
+        
+    }
+
 ];

@@ -14,30 +14,26 @@
         <td mat-cell *matCellDef="let element">{{ element.idCurso }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>NombreCurso</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombreCurso }}</td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-
-      <!-- Weight Column -->
-      <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef>Categoria</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.categoria.nombreCategoria }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="c4">
         <th mat-header-cell *matHeaderCellDef>Descripcion</th>
         <td mat-cell *matCellDef="let element">
           <mat-card class="mini-card" appearance="outlined">
             <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
+              <div
+                mat-card-avatar
+                [ngStyle]="{
+                  'background-image':
+                    'url(' +
+                    (element.urlImagen ||
+                      'https://material.angular.dev/assets/img/examples/shiba2.jpg') +
+                    ')',
+                  'background-size': 'cover',
+                  'background-position': 'center'
+                }"
+              ></div>
               <mat-card-title>{{ element.nombreCurso }}</mat-card-title>
               <mat-card-subtitle>{{
-                element.categoria?.nombreCategoria
+                element.categoria.nombreCategoria
               }}</mat-card-subtitle>
             </mat-card-header>
             <img
@@ -49,14 +45,12 @@
               alt="Imagen del curso"
             />
             <mat-card-content>
-              <p>
-                {{ element.descripcion }}
-              </p>
+              <p>{{ element.descripcion }}</p>
             </mat-card-content>
           </mat-card>
         </td>
       </ng-container>
-      <ng-container matColumnDef="c5">
+      <ng-container matColumnDef="c3">
         <th mat-header-cell *matHeaderCellDef>Actualizar</th>
         <td mat-cell *matCellDef="let element">
           <button matButton [routerLink]="['ediciones', element.idCurso]">
@@ -65,7 +59,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="c6">
+      <ng-container matColumnDef="c4">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button
