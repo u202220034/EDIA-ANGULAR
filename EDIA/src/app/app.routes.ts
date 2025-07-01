@@ -22,6 +22,8 @@ import { InsertartipoactividadComponent } from './components/tipoactividad/inser
 import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
 import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
 import { InsertareditarusuariocursoComponent } from './components/usuariocurso/insertareditarusuariocurso/insertareditarusuariocurso.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportePorcentajeCompletoComponent } from './components/reportes/reporte-porcentaje-completo/reporte-porcentaje-completo.component';
 
 
 
@@ -144,4 +146,13 @@ export const routes: Routes = [
             }
         ]
     },
+    {
+        path:'reportes',component:ReportesComponent,
+        children:[
+            {
+                path:'PorcentajeCompleto',component:ReportePorcentajeCompletoComponent
+            }
+        ]
+        
+    }
 ];

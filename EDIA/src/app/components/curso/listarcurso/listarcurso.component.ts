@@ -27,7 +27,7 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class ListarcursoComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Curso> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private cS: CursoService) {}
