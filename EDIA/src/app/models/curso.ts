@@ -5,4 +5,5 @@ export class Curso{
     nombreCurso:string=""
     descripcion:string=""
     categoria:Categoria=new Categoria()
+    urlImagen?: string;
 }
