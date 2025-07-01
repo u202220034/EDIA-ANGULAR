@@ -7,6 +7,7 @@
     <ul class="nav">
       <li><a href="#presentacion">¿Qué es EDIA?</a></li>
       <li><a href="#resenia">Testimonios</a></li>
+      <li><a href="#noticias">Noticias</a></li>
       <li><a href="#social-media">Suscríbete</a></li>
     </ul>
   </nav>
@@ -71,6 +72,26 @@
     </div>
   </div>
 
+  <div class="container-2" id="noticias"></div>
+    <section class="news-section">
+    <h2 class="news-title">Últimas Noticias sobre Programación y Aprendizaje</h2>
+
+    <div *ngIf="loadingnews" class="loading">Cargando noticias...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div class="news-grid" *ngIf="!loadingnews && !error">
+        <div class="news-card" *ngFor="let article of articles">
+        <img [src]="article.urlToImage || 'assets/images/default-news.png'" alt="imagen de la noticia" />
+        <div class="news-content">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.description }}</p>
+            <a class="news-link" [href]="article.url" target="_blank">Leer más</a>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
   <h2 id="resenia">Lo que dicen nuestros estudiantes</h2>
 
   <div class="container-4">
@@ -92,6 +113,30 @@
     </div>
   </div>
 </main>
+
+<!-- Botón flotante -->
+<button class="chat-toggle" (click)="toggleChat()">
+  💬
+</button>
+
+<!-- Ventana de chat -->
+<div class="chat-window" [class.open]="chatOpen">
+  <div class="chat-header">
+    <p>EDIA Chat IA 🤖</p>
+    <button class="close-btn" (click)="toggleChat()">✖</button>
+  </div>
+
+  <div class="chat-messages">
+    <div *ngFor="let msg of messages" [class.user]="msg.from === 'user'" [class.bot]="msg.from === 'bot'">
+      <p>{{ msg.text }}</p>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input [(ngModel)]="userInput" (keydown.enter)="sendMessage()" placeholder="Haz una pregunta..." />
+    <button (click)="sendMessage()">Enviar</button>
+  </div>
+</div>
 
 <footer>
     <h2 id="social-media"></h2>
