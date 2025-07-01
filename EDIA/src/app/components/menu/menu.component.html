@@ -68,6 +68,25 @@
       Asignaciones de Tipos de Usuarios con los Usuarios
     </button>
   </div>
+   <div>
+    <button mat-button [matMenuTriggerFor]="menuUsuarioDesafio" class="btn-rojo">
+      <mat-icon> assignment_turned_in </mat-icon>
+      Usuario x Desafio
+    </button>
+  </div>
+   <div>
+    <button mat-button [matMenuTriggerFor]="menuRetosdesafio" class="btn-rojo">
+      <mat-icon> card_travel </mat-icon>
+      Retos x Desafio
+    </button>
+  </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuActividades" class="btn-rojo">
+      <mat-icon> done_all </mat-icon>
+      Actividades
+    </button>
+  </div>
+  
 </mat-toolbar>
 
 
@@ -109,6 +128,7 @@
 
 <mat-menu #menuUsuarioDesafio="matMenu">  
     <button mat-menu-item routerLink="/usuariosdesafios">Listar</button>     
+    <button mat-menu-item routerLink="/usuariosdesafios/Insercciones">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuProyectos="matMenu">  
@@ -124,4 +144,14 @@
 <mat-menu #menuTipoUsuariosusus="matMenu">
   <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
   <button mat-menu-item routerLink="/tipousuariosusus/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuRetosdesafio="matMenu">
+  <button mat-menu-item routerLink="/retodesafio">Listar</button>
+  <button mat-menu-item routerLink="/retodesafio/Insercciones">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuActividades="matMenu">
+  <button mat-menu-item routerLink="/actividades">Listar</button>
+  <button mat-menu-item routerLink="/actividades/Insercciones">Registrar</button>
 </mat-menu>

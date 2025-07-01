@@ -22,6 +22,11 @@ import { InsertartipoactividadComponent } from './components/tipoactividad/inser
 import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
 import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
 import { InsertareditarusuariocursoComponent } from './components/usuariocurso/insertareditarusuariocurso/insertareditarusuariocurso.component';
+import { InsertareditarusuariodesafioComponent } from './components/usuariodesafio/insertareditarusuariodesafio/insertareditarusuariodesafio.component';
+import { InsertareditarretosdesafioComponent } from './components/retosdesafio/insertareditarretosdesafio/insertareditarretosdesafio.component';
+import { RetosdesafioComponent } from './components/retosdesafio/retosdesafio.component';
+import { ActividadesComponent } from './components/actividades/actividades.component';
+import { InsertareditaractividadesComponent } from './components/actividades/insertareditaractividades/insertareditaractividades.component';
 
 
 
@@ -108,7 +113,26 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'usuariosdesafios',component:UsuariodesafioComponent
+        path:'usuariosdesafios',component:UsuariodesafioComponent,
+         children:[
+            {
+                path:'Insercciones',component:InsertareditarusuariodesafioComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarusuariodesafioComponent
+            },
+        ]
+    },
+    {
+        path:'retodesafio',component:RetosdesafioComponent,
+         children:[
+            {
+                path:'Insercciones',component:InsertareditarretosdesafioComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditarretosdesafioComponent
+            },
+        ]
     },
     {
         path:'proyectos',component:ProyectoComponent,
@@ -142,6 +166,17 @@ export const routes: Routes = [
             {
                 path:'actualizacion/:id',component: InsertartipousuariousuComponent
             }
+        ]
+    },
+    {
+        path:'actividades',component:ActividadesComponent,
+         children:[
+            {
+                path:'Insercciones',component:InsertareditaractividadesComponent
+            },
+            {
+                path:'ediciones/:id',component:InsertareditaractividadesComponent
+            },
         ]
     },
 ];
