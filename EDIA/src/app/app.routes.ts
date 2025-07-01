@@ -24,6 +24,10 @@ import { InsertartipousuariousuComponent } from './components/tipousuariousu/ins
 import { InsertareditarusuariocursoComponent } from './components/usuariocurso/insertareditarusuariocurso/insertareditarusuariocurso.component';
 import { LandingComponent } from './components/landing/landing.component';
 
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { ReportePorcentajeCompletoComponent } from './components/reportes/reporte-porcentaje-completo/reporte-porcentaje-completo.component';
+
+
 
 
 export const routes: Routes = [
@@ -145,4 +149,13 @@ export const routes: Routes = [
             }
         ]
     },
+    {
+        path:'reportes',component:ReportesComponent,
+        children:[
+            {
+                path:'PorcentajeCompleto',component:ReportePorcentajeCompletoComponent
+            }
+        ]
+        
+    }
 ];

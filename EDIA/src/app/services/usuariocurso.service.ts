@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { usuariocurso } from '../models/usuariocurso';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { CantidadUsuarioCursoDTO } from '../models/cantidadUsuariosxCursoDTO';
+import { CantidadUsuarioCursoCompletoDTO } from '../models/EstudianteconPorcentajeCompletoxCursoDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -33,4 +35,11 @@ export class UsuariocursoService {
   getList() {
     return this.listacambio.asObservable();
   }
+  getQuantityByCurso(): Observable<CantidadUsuarioCursoDTO[]> {
+    return this.http.get<CantidadUsuarioCursoDTO[]>(`${this.url}/CantidadEstudianteporCurso`);
+  }
+  getQuantityByCursoCompleto(): Observable<CantidadUsuarioCursoCompletoDTO[]> {
+    return this.http.get<CantidadUsuarioCursoCompletoDTO[]>(`${this.url}/AlumnosconCursosCompletos`);
+  }
+  
 }

@@ -50,4 +50,5 @@ export class ListarleccionesComponent implements OnInit, AfterViewInit {
     // Asegura que el paginador esté asignado después de inicializado
     this.dataSource.paginator = this.paginator;
   }
+  
 }
