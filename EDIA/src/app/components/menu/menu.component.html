@@ -61,6 +61,7 @@
   </div>
   
   <div>
+    <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
     <button
       mat-button
       [matMenuTriggerFor]="menuReportes"
@@ -124,11 +125,6 @@
 <mat-menu #menuTipoUsuarios="matMenu">
   <button mat-menu-item routerLink="/tipousuarios">Listar</button>
   <button mat-menu-item routerLink="/tipousuarios/nuevo" *ngIf="isAdmin()">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuTipoUsuariosusus="matMenu">
-  <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
-  <button mat-menu-item routerLink="/tipousuariosusus/nuevo" *ngIf="isAdmin()">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuReportes="matMenu">

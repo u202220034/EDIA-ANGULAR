@@ -3,24 +3,17 @@ import { CategoriaComponent } from './components/categoria/categoria.component';
 import { InsertarcategoriaComponent } from './components/categoria/insertarcategoria/insertarcategoria.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { InsertarusuarioComponent } from './components/usuario/insertarusuario/insertarusuario.component';
-import { TipoactividadComponent } from './components/tipoactividad/tipoactividad.component';
-import { DesafiotempComponent } from './components/desafiotemp/desafiotemp.component';
-import { InsertareditardesafiotempComponent } from './components/desafiotemp/insertareditardesafiotemp/insertareditardesafiotemp.component';
+
 import { CursoComponent } from './components/curso/curso.component';
 import { UsuariocursoComponent } from './components/usuariocurso/usuariocurso.component';
-import { LeccionesComponent } from './components/lecciones/lecciones.component';
-import { UsuariodesafioComponent } from './components/usuariodesafio/usuariodesafio.component';
+
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { TipousuarioComponent } from './components/tipousuario/tipousuario.component';
 import { InsertartipousuarioComponent } from './components/tipousuario/insertartipousuario/insertartipousuario.component';
-import { TipousuariousuComponent } from './components/tipousuariousu/tipousuariousu.component';
 
 import { InsertareditarcursoComponent } from './components/curso/insertareditarcurso/insertareditarcurso.component';
-import { InsertareditarleccionesComponent } from './components/lecciones/insertareditarlecciones/insertareditarlecciones.component';
 
-import { InsertartipoactividadComponent } from './components/tipoactividad/insertartipoactividad/insertartipoactividad.component';
 import { InsertarproyectoComponent } from './components/proyecto/insertarproyecto/insertarproyecto.component';
-import { InsertartipousuariousuComponent } from './components/tipousuariousu/insertartipousuariousu/insertartipousuariousu.component';
 import { InsertareditarusuariocursoComponent } from './components/usuariocurso/insertareditarusuariocurso/insertareditarusuariocurso.component';
 import { LandingComponent } from './components/landing/landing.component';
 
@@ -70,7 +63,6 @@ export const routes: Routes = [
     ],
     canActivate: [seguridadGuard],
   },
-
   {
     path: 'curso',
     component: CursoComponent,
@@ -135,26 +127,8 @@ export const routes: Routes = [
         canActivate: [seguridadGuard],
 
   },
-  
-
- 
   {
-    path: 'tipousuarios',
-    component: TipousuarioComponent,
-    children: [
-      {
-        path: 'nuevo',
-        component: InsertartipousuarioComponent,
-      },
-      {
-        path: 'actualizacion/:id',
-        component: InsertartipousuarioComponent,
-      },
-    ],
-    canActivate: [seguridadGuard],
-  },
 
-  {
     path: 'reportes',
     component: ReportesComponent,
     children: [
