@@ -9,7 +9,7 @@
       mat-button
       [matMenuTriggerFor]="menuUsuarios"
       class="btn-rojo"
-      *ngIf="isDeveloper()"
+      *ngIf="isAdmin() || isEstudiante()"
     >
       <mat-icon>person</mat-icon>
       Usuarios
@@ -20,7 +20,7 @@
       mat-button
       [matMenuTriggerFor]="menuCategorias"
       class="btn-rojo"
-      *ngIf="isDeveloper()"
+      *ngIf="isAdmin() || isEstudiante()"
     >
       <mat-icon>poll</mat-icon>
       Categorias
@@ -31,7 +31,7 @@
       mat-button
       [matMenuTriggerFor]="menuCursos"
       class="btn-rojo"
-      *ngIf="isDeveloper()"
+      *ngIf="isAdmin() || isEstudiante()"
     >
       <mat-icon>computer</mat-icon>
       Cursos
@@ -42,24 +42,58 @@
       mat-button
       [matMenuTriggerFor]="menuUsuarioCursos"
       class="btn-rojo"
-      *ngIf="isDeveloper()"
+      *ngIf="isAdmin() || isEstudiante()"
     >
       <mat-icon>wc</mat-icon>
       Usuario-Cursos
     </button>
   </div>
   <div>
-    <button mat-button [matMenuTriggerFor]="menuTipoUsuarios" class="btn-rojo">
+    <button
+      mat-button
+      [matMenuTriggerFor]="menuTipoUsuarios"
+      class="btn-rojo"
+      *ngIf="isAdmin()"
+    >
       <mat-icon>supervised_user_circle</mat-icon>
       Tipos de Usuarios
     </button>
   </div>
+  
   <div>
     <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
+    <button
+      mat-button
+      [matMenuTriggerFor]="menuReportes"
+      class="btn-rojo"
+      *ngIf="isAdmin()"
+    >
       <mat-icon>file_copy</mat-icon>
       Reportes
     </button>
   </div>
+  <div>
+  <button
+    mat-button
+    [matMenuTriggerFor]="menuProyectos"
+    class="btn-rojo"
+    *ngIf="isAdmin() || isEstudiante()"
+  >
+    <mat-icon>assignment</mat-icon>
+    Proyectos
+  </button>
+</div>
+<div>
+  <button
+    mat-button
+    [matMenuTriggerFor]="menuTipoUsuario"
+    class="btn-rojo"
+    *ngIf="isAdmin() || isEstudiante()"
+  >
+    <mat-icon>people</mat-icon>
+    Tipo de Usuario
+  </button>
+</div>
   <span class="toolbar-spacer"></span>
   <div class="right-menu">
     <button mat-button [matMenuTriggerFor]="menuSalir">
@@ -70,29 +104,27 @@
 
 <mat-menu #menuUsuarios="matMenu">
   <button mat-menu-item routerLink="/usuarios">Listar</button>
-  <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/usuarios/nuevo" *ngIf="isAdmin()">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuCategorias="matMenu">
   <button mat-menu-item routerLink="/categoria">Listar</button>
-  <button mat-menu-item routerLink="/categoria/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/categoria/nuevo" *ngIf="isAdmin()">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuCursos="matMenu">
   <button mat-menu-item routerLink="/curso">Listar</button>
-  <button mat-menu-item routerLink="/curso/Inserciones">Registrar</button>
+  <button mat-menu-item routerLink="/curso/Inserciones" *ngIf="isAdmin()">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuUsuarioCursos="matMenu">
   <button mat-menu-item routerLink="/usuarioscursos">Listar</button>
-  <button mat-menu-item routerLink="/usuarioscursos/InserccionesUsuarioCurso">
-    Registrar
-  </button>
+  <button mat-menu-item routerLink="/usuarioscursos/InserccionesUsuarioCurso" *ngIf="isAdmin()">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuTipoUsuarios="matMenu">
   <button mat-menu-item routerLink="/tipousuarios">Listar</button>
-  <button mat-menu-item routerLink="/tipousuarios/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/tipousuarios/nuevo" *ngIf="isAdmin()">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuReportes="matMenu">
@@ -101,7 +133,15 @@
     Reporte PorcentajexCursoCompleto
   </button>
 </mat-menu>
+<mat-menu #menuProyectos="matMenu">
+  <button mat-menu-item routerLink="/proyecto">Listar</button>
+  <button mat-menu-item routerLink="/proyecto/Inserciones" *ngIf="isAdmin()">Registrar</button>
+</mat-menu>
 
+<mat-menu #menuTipoUsuario="matMenu">
+  <button mat-menu-item routerLink="/tipousuario">Listar</button>
+  <button mat-menu-item routerLink="/tipousuario/Inserciones" *ngIf="isAdmin()">Registrar</button>
+</mat-menu>
 <mat-menu #menuSalir="matMenu">
   <button mat-menu-item routerLink="/login" (click)="cerrar()">
     <mat-icon>logout</mat-icon>

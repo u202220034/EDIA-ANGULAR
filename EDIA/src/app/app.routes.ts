@@ -61,6 +61,7 @@ export const routes: Routes = [
         component: InsertarusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'curso',
@@ -95,34 +96,39 @@ export const routes: Routes = [
 
   },
   {
-    path: 'proyectos',
+    path: 'proyecto',
     component: ProyectoComponent,
     children: [
       {
-        path: 'nuevo',
+        path: 'Inserciones',
         component: InsertarproyectoComponent,
       },
       {
-        path: 'actualizacion/:id',
+        path: 'ediciones/:id',
         component: InsertarproyectoComponent,
       },
     ],
+        canActivate: [seguridadGuard],
+
   },
   {
-    path: 'tipousuarios',
+    path: 'tipousuario',
     component: TipousuarioComponent,
     children: [
       {
-        path: 'nuevo',
+        path: 'Inserciones',
         component: InsertartipousuarioComponent,
       },
       {
-        path: 'actualizacion/:id',
+        path: 'ediciones/:id',
         component: InsertartipousuarioComponent,
       },
     ],
+        canActivate: [seguridadGuard],
+
   },
   {
+
     path: 'reportes',
     component: ReportesComponent,
     children: [
@@ -131,6 +137,7 @@ export const routes: Routes = [
         component: ReportePorcentajeCompletoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'landing',
