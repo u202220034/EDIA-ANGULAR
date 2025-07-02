@@ -26,136 +26,181 @@ import { LandingComponent } from './components/landing/landing.component';
 
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportePorcentajeCompletoComponent } from './components/reportes/reporte-porcentaje-completo/reporte-porcentaje-completo.component';
-
-
-
+import { LoginComponent } from './components/login/login.component';
+import { seguridadGuard } from './guard/seguridad.guard';
 
 export const routes: Routes = [
-    {
-        path:'',component:LandingComponent
-    },
-    {
-       path:'categoria',component:CategoriaComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertarcategoriaComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertarcategoriaComponent
-            }
-        ]
-    },
-    {
-        path:'usuarios', component: UsuarioComponent,
-            children: [
-                {
-                    path:'nuevo',component: InsertarusuarioComponent
-                },
-                {
-                    path:'actualizacion/:id',component: InsertarusuarioComponent
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
 
-                }
-            ] 
-    },
-    {
-        path:'tipo', component: TipoactividadComponent,
-            children:[
-                {
-                    path:'nuevo',component: InsertartipoactividadComponent
-                },
-                {
-                    path:'ediciones/:id',component:InsertartipoactividadComponent
-                },
-            ]
-    },
-    {
-        path:'desafiotemporal',component:DesafiotempComponent,
-        children:[
-            {
-                path:'nuevo',component:InsertareditardesafiotempComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditardesafiotempComponent
-            }
-        ]
-    },
-    {
-        path:'curso',component:CursoComponent,
-        children:[
-            {
-                path:'Inserciones',component:InsertareditarcursoComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarcursoComponent
-            },
-        ]
-    },
-    {
-        path:'usuarioscursos',component:UsuariocursoComponent,
-        children:[
-            {
-                path:'InserccionesUsuarioCurso',component:InsertareditarusuariocursoComponent,
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarusuariocursoComponent
-            },
-        ]
-    },
-    {
-        path:'lecciones',component:LeccionesComponent,
-        children:[
-            {
-                path:'Insercciones',component:InsertareditarleccionesComponent
-            },
-            {
-                path:'ediciones/:id',component:InsertareditarleccionesComponent
-            },
-        ]
-    },
-    {
-        path:'usuariosdesafios',component:UsuariodesafioComponent
-    },
-    {
-        path:'proyectos',component:ProyectoComponent,
-        children: [
-            {
-                path:'nuevo',component:InsertarproyectoComponent
-            },
-            {
-                path:'actualizacion/:id',component:InsertarproyectoComponent
-            }
-        ]
-    },
-    {
-        path:'tipousuarios',component:TipousuarioComponent,
-        children: [
-                {
-                    path:'nuevo',component: InsertartipousuarioComponent
-                },
-                {
-                    path:'actualizacion/:id',component: InsertartipousuarioComponent
+  {
+    path: 'categoria',
+    component: CategoriaComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertarcategoriaComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertarcategoriaComponent,
+      },
+    ],
+    canActivate: [seguridadGuard],
+  },
+  {
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertarusuarioComponent,
+      },
+      {
+        path: 'actualizacion/:id',
+        component: InsertarusuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'tipo',
+    component: TipoactividadComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertartipoactividadComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertartipoactividadComponent,
+      },
+    ],
+  },
+  {
+    path: 'desafiotemporal',
+    component: DesafiotempComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertareditardesafiotempComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditardesafiotempComponent,
+      },
+    ],
+  },
+  {
+    path: 'curso',
+    component: CursoComponent,
+    children: [
+      {
+        path: 'Inserciones',
+        component: InsertareditarcursoComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarcursoComponent,
+      },
+    ],
+        canActivate: [seguridadGuard],
 
-                }
-            ] 
-    },
-    {
-        path:'tipousuariosusus',component: TipousuariousuComponent,
-        children: [
-            {
-                path:'nuevo',component: InsertartipousuariousuComponent
-            },
-            {
-                path:'actualizacion/:id',component: InsertartipousuariousuComponent
-            }
-        ]
-    },
-    {
-        path:'reportes',component:ReportesComponent,
-        children:[
-            {
-                path:'PorcentajeCompleto',component:ReportePorcentajeCompletoComponent
-            }
-        ]
-        
-    }
+  },
+  {
+    path: 'usuarioscursos',
+    component: UsuariocursoComponent,
+    children: [
+      {
+        path: 'InserccionesUsuarioCurso',
+        component: InsertareditarusuariocursoComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarusuariocursoComponent,
+      },
+    ],
+        canActivate: [seguridadGuard],
+
+  },
+  {
+    path: 'lecciones',
+    component: LeccionesComponent,
+    children: [
+      {
+        path: 'Insercciones',
+        component: InsertareditarleccionesComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertareditarleccionesComponent,
+      },
+    ],
+  },
+  {
+    path: 'usuariosdesafios',
+    component: UsuariodesafioComponent,
+  },
+  {
+    path: 'proyectos',
+    component: ProyectoComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertarproyectoComponent,
+      },
+      {
+        path: 'actualizacion/:id',
+        component: InsertarproyectoComponent,
+      },
+    ],
+  },
+  {
+    path: 'tipousuarios',
+    component: TipousuarioComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertartipousuarioComponent,
+      },
+      {
+        path: 'actualizacion/:id',
+        component: InsertartipousuarioComponent,
+      },
+    ],
+  },
+  {
+    path: 'tipousuariosusus',
+    component: TipousuariousuComponent,
+    children: [
+      {
+        path: 'nuevo',
+        component: InsertartipousuariousuComponent,
+      },
+      {
+        path: 'actualizacion/:id',
+        component: InsertartipousuariousuComponent,
+      },
+    ],
+  },
+  {
+    path: 'reportes',
+    component: ReportesComponent,
+    children: [
+      {
+        path: 'PorcentajeCompleto',
+        component: ReportePorcentajeCompletoComponent,
+      },
+    ],
+  },
+  {
+    path: 'landing',
+    component: LandingComponent,
+  },
 ];
