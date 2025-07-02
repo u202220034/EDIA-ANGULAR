@@ -34,11 +34,11 @@ export class MenuComponent {
     this.role = this.loginService.showRole();
     return this.loginService.verificar();
   }
-  isDeveloper() {
+  isAdmin() {
     return this.role === 'ADMIN';
   }
 
-  isTester() {
+  isEstudiante() {
     return this.role === 'ESTUDIANTE';
   }
 }

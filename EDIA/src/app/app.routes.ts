@@ -68,35 +68,9 @@ export const routes: Routes = [
         component: InsertarusuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
-  {
-    path: 'tipo',
-    component: TipoactividadComponent,
-    children: [
-      {
-        path: 'nuevo',
-        component: InsertartipoactividadComponent,
-      },
-      {
-        path: 'ediciones/:id',
-        component: InsertartipoactividadComponent,
-      },
-    ],
-  },
-  {
-    path: 'desafiotemporal',
-    component: DesafiotempComponent,
-    children: [
-      {
-        path: 'nuevo',
-        component: InsertareditardesafiotempComponent,
-      },
-      {
-        path: 'ediciones/:id',
-        component: InsertareditardesafiotempComponent,
-      },
-    ],
-  },
+
   {
     path: 'curso',
     component: CursoComponent,
@@ -130,37 +104,40 @@ export const routes: Routes = [
 
   },
   {
-    path: 'lecciones',
-    component: LeccionesComponent,
-    children: [
-      {
-        path: 'Insercciones',
-        component: InsertareditarleccionesComponent,
-      },
-      {
-        path: 'ediciones/:id',
-        component: InsertareditarleccionesComponent,
-      },
-    ],
-  },
-  {
-    path: 'usuariosdesafios',
-    component: UsuariodesafioComponent,
-  },
-  {
-    path: 'proyectos',
+    path: 'proyecto',
     component: ProyectoComponent,
     children: [
       {
-        path: 'nuevo',
+        path: 'Inserciones',
         component: InsertarproyectoComponent,
       },
       {
-        path: 'actualizacion/:id',
+        path: 'ediciones/:id',
         component: InsertarproyectoComponent,
       },
     ],
+        canActivate: [seguridadGuard],
+
   },
+  {
+    path: 'tipousuario',
+    component: TipousuarioComponent,
+    children: [
+      {
+        path: 'Inserciones',
+        component: InsertartipousuarioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: InsertartipousuarioComponent,
+      },
+    ],
+        canActivate: [seguridadGuard],
+
+  },
+  
+
+ 
   {
     path: 'tipousuarios',
     component: TipousuarioComponent,
@@ -174,21 +151,9 @@ export const routes: Routes = [
         component: InsertartipousuarioComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
-  {
-    path: 'tipousuariosusus',
-    component: TipousuariousuComponent,
-    children: [
-      {
-        path: 'nuevo',
-        component: InsertartipousuariousuComponent,
-      },
-      {
-        path: 'actualizacion/:id',
-        component: InsertartipousuariousuComponent,
-      },
-    ],
-  },
+
   {
     path: 'reportes',
     component: ReportesComponent,
@@ -198,6 +163,7 @@ export const routes: Routes = [
         component: ReportePorcentajeCompletoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'landing',

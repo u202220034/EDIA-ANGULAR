@@ -12,17 +12,23 @@ export class LoginService {
     return this.http.post('http://localhost:8083/Inicio_de_Sesion', request);
   }
   verificar() {
-    let token = sessionStorage.getItem('token');
-    return token != null;
+    if (typeof window !== 'undefined' && sessionStorage) {
+      let token = sessionStorage.getItem('token');
+      return token != null;
+    }
+    return false;
   }
   showRole() {
-    let token = sessionStorage.getItem('token');
-    if (!token) {
-      // Manejar el caso en el que el token es nulo.
-      return null; // O cualquier otro valor predeterminado dependiendo del contexto.
+    if (typeof window !== 'undefined' && sessionStorage) {
+      let token = sessionStorage.getItem('token');
+      if (!token) {
+        return null; // O un valor por defecto, por ejemplo 'ESTUDIANTE'
+      }
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      return decodedToken?.tipousuario || null;
     }
-    const helper = new JwtHelperService();
-    const decodedToken = helper.decodeToken(token);
-    return decodedToken?.tipousuario;
+    return null;
   }
+  
 }
