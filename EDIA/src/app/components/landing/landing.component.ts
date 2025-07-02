@@ -63,5 +63,11 @@ export class LandingComponent implements OnInit {
   });
 }
 
-
+scrollTo(id: string, event: Event) {
+  event.preventDefault(); // evita el salto arriba del todo
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 }

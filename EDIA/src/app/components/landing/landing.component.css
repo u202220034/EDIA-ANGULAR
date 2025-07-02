@@ -507,3 +507,6 @@ footer {
   text-align: left;
   color: #4e342e;
 }
+.nav li a {
+  cursor: pointer;
+}
