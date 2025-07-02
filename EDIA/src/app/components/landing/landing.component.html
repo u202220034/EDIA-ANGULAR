@@ -128,7 +128,7 @@
 
   <div class="chat-messages">
     <div *ngFor="let msg of messages" [class.user]="msg.from === 'user'" [class.bot]="msg.from === 'bot'">
-      <p>{{ msg.text }}</p>
+      <p [innerHTML]="msg.text"></p>
     </div>
   </div>
 
