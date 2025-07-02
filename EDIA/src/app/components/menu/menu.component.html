@@ -55,16 +55,6 @@
     </button>
   </div>
   <div>
-    <button
-      mat-button
-      [matMenuTriggerFor]="menuTipoUsuariosusus"
-      class="btn-rojo"
-    >
-      <mat-icon>verified_user</mat-icon>
-      Asignaciones de Tipos de Usuarios con los Usuarios
-    </button>
-  </div>
-  <div>
     <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
       <mat-icon>file_copy</mat-icon>
       Reportes
@@ -103,11 +93,6 @@
 <mat-menu #menuTipoUsuarios="matMenu">
   <button mat-menu-item routerLink="/tipousuarios">Listar</button>
   <button mat-menu-item routerLink="/tipousuarios/nuevo">Registrar</button>
-</mat-menu>
-
-<mat-menu #menuTipoUsuariosusus="matMenu">
-  <button mat-menu-item routerLink="/tipousuariosusus">Listar</button>
-  <button mat-menu-item routerLink="/tipousuariosusus/nuevo">Registrar</button>
 </mat-menu>
 
 <mat-menu #menuReportes="matMenu">
