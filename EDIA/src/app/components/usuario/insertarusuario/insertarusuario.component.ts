@@ -47,7 +47,7 @@ export class InsertarusuarioComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       codigo: [''],
-      usuario: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
@@ -58,7 +58,7 @@ export class InsertarusuarioComponent implements OnInit {
   aceptar(){
     if (this.form.valid) {
       this.usuario.idUsuario = this.form.value.codigo;
-      this.usuario.usuario = this.form.value.usuario;
+      this.usuario.username = this.form.value.username;
       this.usuario.password = this.form.value.password;
       this.usuario.nombre = this.form.value.nombre;
       this.usuario.apellidos = this.form.value.apellidos;
@@ -89,7 +89,7 @@ export class InsertarusuarioComponent implements OnInit {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           codigo: new FormControl(data.idUsuario),
-          usuario: new FormControl(data.usuario, Validators.required),
+          username: new FormControl(data.username, Validators.required),
           password: new FormControl(data.password, Validators.required),
           nombre: new FormControl(data.nombre, Validators.required),
           apellidos: new FormControl(data.apellidos, Validators.required),
