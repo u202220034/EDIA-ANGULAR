@@ -21,6 +21,8 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { ReportePorcentajeCompletoComponent } from './components/reportes/reporte-porcentaje-completo/reporte-porcentaje-completo.component';
 import { LoginComponent } from './components/login/login.component';
 import { seguridadGuard } from './guard/seguridad.guard';
+import { ReporteCantidadxProyectoComponent } from './components/reportes/reporte-cantidadx-proyecto/reporte-cantidadx-proyecto.component';
+import { ReporteCantidadfechaProyectoComponent } from './components/reportes/reporte-cantidadfecha-proyecto/reporte-cantidadfecha-proyecto.component';
 
 export const routes: Routes = [
   {
@@ -136,6 +138,14 @@ export const routes: Routes = [
         path: 'PorcentajeCompleto',
         component: ReportePorcentajeCompletoComponent,
       },
+      {
+        path: 'ProyectosxUsuario',
+        component: ReporteCantidadxProyectoComponent
+      },
+      {
+        path: 'ProyectosxMes',
+        component: ReporteCantidadfechaProyectoComponent
+      }
     ],
     canActivate: [seguridadGuard],
   },
