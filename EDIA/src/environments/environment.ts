@@ -1,4 +1,4 @@
-export const environment={
-    production:false,
-    base:"http://localhost:8083"
-}
+export const environment = {
+  production: true,
+  base: "https://edia-o3oo.onrender.com"
+};
