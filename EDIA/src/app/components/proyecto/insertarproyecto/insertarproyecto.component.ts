@@ -93,7 +93,7 @@ export class InsertarproyectoComponent implements OnInit {
           })
         })
       }
-      this.router.navigate(['proyectos']);
+      this.router.navigate(['proyecto']);
     }
   }
   init(){
