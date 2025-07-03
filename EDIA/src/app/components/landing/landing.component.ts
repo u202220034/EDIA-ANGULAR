@@ -46,22 +46,22 @@ export class LandingComponent implements OnInit {
   sendMessage() {
   if (!this.userInput.trim()) return;
 
-  const userMsg = this.userInput;
-  this.messages.push({ from: 'user', text: userMsg });
-  this.userInput = '';
+    const userMsg = this.userInput;
+    this.messages.push({ from: 'user', text: userMsg });
+    this.userInput = '';
 
-  this.hfService.sendToAI(userMsg).subscribe({
-    next: res => {
-    console.log('Respuesta IA:', res);
-    const reply = res?.choices?.[0]?.message?.content || 'No entendí tu pregunta.';
-    const formatted = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-    this.messages.push({ from: 'bot', text: formatted });
-  },
-    error: () => {
-      this.messages.push({ from: 'bot', text: 'Hubo un error al procesar tu mensaje.' });
-    }
-  });
-}
+    this.hfService.sendToAI(userMsg).subscribe({
+      next: res => {
+      console.log('Respuesta IA:', res);
+      const reply = res?.choices?.[0]?.message?.content || 'No entendí tu pregunta.';
+      const formatted = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+      this.messages.push({ from: 'bot', text: formatted });
+    },
+      error: () => {
+        this.messages.push({ from: 'bot', text: 'Hubo un error al procesar tu mensaje.' });
+      }
+    });
+
 
 scrollTo(id: string, event: Event) {
   event.preventDefault(); // evita el salto arriba del todo
@@ -70,4 +70,13 @@ scrollTo(id: string, event: Event) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+  }
+
+  scrollToTop(): void {
+    const navbar = document.getElementById('navbar');
+    navbar?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+
 }
