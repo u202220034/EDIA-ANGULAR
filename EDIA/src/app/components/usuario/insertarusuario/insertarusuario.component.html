@@ -18,7 +18,9 @@
                     <mat-label>Usuario</mat-label>
                     <input matInput formControlName="username"/>
                     <mat-error *ngIf="form.get('username')?.hasError('required')">
+
                         El username es obligatorio!!
+
                     </mat-error>
                 </mat-form-field>
                 <br />
