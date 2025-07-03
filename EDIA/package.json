@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node dist/edia/server/server.mjs",             
     "build": "ng build",
+    "build:ssr": "ng build && ng run EDIA:server",           
+    "serve:ssr": "node dist/edia/server/server.mjs",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:EDIA": "node dist/edia/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
