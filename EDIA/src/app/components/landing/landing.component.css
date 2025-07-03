@@ -53,12 +53,15 @@ body {
   color: var(--white);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .nav li a:hover,
 .register li a:hover {
   color: var(--accent-blue);
+  transform: scale(1.1);
 }
 
 .suscribe {
@@ -519,4 +522,27 @@ footer {
 
 #up:hover {
   transform: scale(1.1); /* hace que el botón crezca un poco al pasar el mouse */
+}
+
+.vercursos {
+  background-color: #a5d6a7; /* Verde suave */
+  color: var(--green-dark);  /* Texto verde oscuro */
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  cursor: pointer;
+}
+.vercursos:hover {
+  background-color: #1b5e20; /* Verde oscuro al pasar el mouse */
+  color: white;
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.register .vercursos {
+  color: var(--green-dark);
+  background-color: #a5d6a7;
 }

@@ -26,3 +26,9 @@ button:hover {
 .btn-eliminar:hover {
   background-color: #c62828; /* rojo más oscuro al pasar el mouse */
 }
+
+.center-text {
+  text-align: center;
+  font-weight: 500; /* opcional, solo si quieres resaltar */
+  margin-top: 1rem; /* opcional para separación */
+}

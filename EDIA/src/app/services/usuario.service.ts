@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
 import { Subject } from 'rxjs';
 
@@ -19,7 +19,9 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.url)
   }
   insert(u: Usuario) {
-    return this.http.post(this.url, u);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(this.url, u, { headers });
   }
   getList() {
     return this.listaUsuarioCambio.asObservable();
@@ -31,7 +33,9 @@ export class UsuarioService {
     return this.http.get<Usuario>(`${this.url}/${id}`);
   }
   update(u: Usuario) {
-    return this.http.put(this.url, u);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(this.url, u, { headers });
   }
   deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
