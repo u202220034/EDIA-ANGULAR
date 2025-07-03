@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { IaApiService } from '../../services/ia-api.service';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-landing',
@@ -27,7 +29,8 @@ export class LandingComponent implements OnInit {
   
   constructor(
     private newsService:NewsAPIService,
-    private hfService: IaApiService
+    private hfService: IaApiService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -61,21 +64,27 @@ export class LandingComponent implements OnInit {
         this.messages.push({ from: 'bot', text: 'Hubo un error al procesar tu mensaje.' });
       }
     });
-
-
-scrollTo(id: string, event: Event) {
-  event.preventDefault(); // evita el salto arriba del todo
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
   }
-}
 
+  scrollTo(id: string, event: Event) {
+    event.preventDefault(); // evita el salto arriba del todo
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   scrollToTop(): void {
     const navbar = document.getElementById('navbar');
     navbar?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  registrarse() {
+    this.router.navigate(['usuarios/nuevo']);
+  }
+
+  vercursos() {
+    this.router.navigate(['curso']);
   }
 
 

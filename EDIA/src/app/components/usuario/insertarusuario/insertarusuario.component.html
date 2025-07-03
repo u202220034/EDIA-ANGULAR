@@ -18,7 +18,9 @@
                     <mat-label>Usuario</mat-label>
                     <input matInput formControlName="username"/>
                     <mat-error *ngIf="form.get('username')?.hasError('required')">
-                        El usuario es obligatorio!!
+
+                        El username es obligatorio!!
+
                     </mat-error>
                 </mat-form-field>
                 <br />
@@ -73,6 +75,10 @@
                 <br />
                 <button mat-raised-button>{{ actualizar ? "Actualizar Usuario" : "Registro de Usuario"}}</button>
             </form>
+            <br />
+            <button mat-button color="warn" type="button" (click)="cancelar()">
+            Cancelar
+            </button>
         </div>
     </div>
 </div>

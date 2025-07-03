@@ -5,7 +5,12 @@
         <h1>Lista de Usuarios</h1>
     </div>
     <div>
+
     <div style="text-align: center; margin: 5%"></div>
+      <p class="center-text">
+        Total de Usuarios:
+        {{ dataSource.data ? dataSource.data.length : 0 }}
+      </p>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           
             <!-- Position Column -->
