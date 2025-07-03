@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { 
-  FormBuilder, 
-  FormControl, 
-  FormGroup, 
-  ReactiveFormsModule, 
-  Validators} from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { Tipousuario } from '../../../models/tipousuario';
@@ -20,14 +21,14 @@ import { MatSelectModule } from '@angular/material/select';
   selector: 'app-insertartipousuario',
   imports: [
     ReactiveFormsModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     CommonModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   templateUrl: './insertartipousuario.component.html',
-  styleUrl: './insertartipousuario.component.css'
+  styleUrl: './insertartipousuario.component.css',
 })
 export class InsertartipousuarioComponent {
   form: FormGroup = new FormGroup({});
@@ -43,7 +44,7 @@ export class InsertartipousuarioComponent {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private uS:UsuarioService
+    private uS: UsuarioService
   ) {}
 
   ngOnInit(): void {
@@ -57,29 +58,29 @@ export class InsertartipousuarioComponent {
     this.form = this.formBuilder.group({
       codigo: [''],
       nombreTipoUsuario: ['', Validators.required],
-      usu:['', Validators.required]
+      usu: ['', Validators.required],
     });
 
     this.uS.list().subscribe((data) => {
       this.listaUsuario = data;
     });
   }
-  aceptar(){
-    if(this.form.valid){
-      this.tipousuario.id = this.form.value.codigo;
+  aceptar() {
+    if (this.form.valid) {
+      this.tipousuario.idTipoUsuario = this.form.value.codigo;
       this.tipousuario.tipoUsuario = this.form.value.nombreTipoUsuario;
       this.tipousuario.usuario.idUsuario = this.form.value.usu; // Asignar null al usuario, si es necesario
       if (this.actualizar) {
         // Actualizar
         this.tuS.update(this.tipousuario).subscribe(() => {
-          this.tuS.list().subscribe(data => {
+          this.tuS.list().subscribe((data) => {
             this.tuS.setList(data);
           });
         });
       } else {
         // Insertar
         this.tuS.insert(this.tipousuario).subscribe(() => {
-          this.tuS.list().subscribe(data => {
+          this.tuS.list().subscribe((data) => {
             this.tuS.setList(data);
           });
         });
@@ -88,15 +89,18 @@ export class InsertartipousuarioComponent {
     }
   }
 
-  init(){
+  init() {
     if (this.actualizar) {
       this.tuS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
-          codigo: new FormControl(data.id),
-          nombreTipoUsuario: new FormControl(data.tipoUsuario, Validators.required),
-          usu: new FormControl(data.usuario.idUsuario, Validators.required)
+          codigo: new FormControl(data.idTipoUsuario),
+          nombreTipoUsuario: new FormControl(
+            data.tipoUsuario,
+            Validators.required
+          ),
+          usu: new FormControl(data.usuario.idUsuario, Validators.required),
         });
-      })
+      });
     }
   }
   cancelar() {
