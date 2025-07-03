@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node dist/edia/server/server.mjs",             
     "build": "ng build",
-    "build:ssr": "ng build && ng run EDIA:server",           
-    "serve:ssr": "node dist/edia/server/server.mjs",
+    "build:ssr": "ng build --configuration production && ng run EDIA:server:production",
+    "start": "node dist/edia/server/main.mjs",        
+    "serve:ssr": "node dist/edia/server/main.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
