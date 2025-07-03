@@ -1,21 +1,23 @@
 <div class="title-container">
+  <div style="text-align: center" class="title">
+    <h1>Cantidad de estudiantes matriculados en cursos</h1>
+  </div>
 
-    <div style="text-align: center" class="title">
-  
-     <h1 >Cantidad de estudiantes matriculados en cursos</h1>
-  
-    </div>
-  
-    <div style="text-align: center" class="chart-container">
-        <canvas
-        baseChart
-        [datasets]="barChartData"
-        [labels]="barChartLabels"
-        [options]="barChartOptions"
-        [legend]="barChartLegend"
-        [type]="barChartType"
-        >
-
-        </canvas>
-    </div>
+  <div style="text-align: center" *ngIf="hasData">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType"
+    >
+    </canvas>
+  </div>
+  <div class="no-data" *ngIf="!hasData">
+    <mat-icon class="no-data-icon">info_outline</mat-icon>
+    <p class="no-data-message">
+      No hay datos de porcentaje completado para mostrar.
+    </p>
+  </div>
 </div>

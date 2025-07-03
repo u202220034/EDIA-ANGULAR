@@ -1,21 +1,21 @@
 <div class="title-container">
+  <div style="text-align: center" class="title">
+    <h1>Cantidad de proyectos por Estudiantes</h1>
+  </div>
 
-    <div style="text-align: center" class="title">
-  
-     <h1 >Cantidad de proyectos por Estudiantes</h1>
-  
-    </div>
-  
-    <div style="text-align: center" class="chart-container">
-        <canvas
-        baseChart
-        [datasets]="barChartData"
-        [labels]="barChartLabels"
-        [options]="barChartOptions"
-        [legend]="barChartLegend"
-        [type]="barChartType"
-        >
+  <div style="text-align: center" class="chart-container" *ngIf="hasData">
+  <canvas
+    baseChart
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [legend]="barChartLegend"
+    [type]="barChartType">
+  </canvas>
+</div>
 
-        </canvas>
-    </div>
+  <div class="no-data" *ngIf="hasData==false">
+    <mat-icon class="no-data-icon">info_outline</mat-icon>
+    <p class="no-data-message">No hay datos disponibles para mostrar.</p>
+  </div>
 </div>
