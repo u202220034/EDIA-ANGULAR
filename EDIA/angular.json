@@ -16,6 +16,8 @@
             "outputPath": "dist/edia",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "server": "src/main.server.ts",
+            "outputMode": "server",
             "polyfills": [
               "zone.js"
             ],
@@ -38,11 +40,7 @@
             ],
             "scripts": [
               "src/assets/scripts/main.js"
-            ],
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
