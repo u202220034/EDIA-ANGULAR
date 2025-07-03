@@ -22,8 +22,24 @@
                     </mat-error>
                 </mat-form-field>
                 <br />
+                <mat-form-field>
+                    <mat-label>Seleccione Usuario</mat-label>
+                    <mat-select formControlName="usu">
+                    @for (food of listaUsuario; track food) {
+                    <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+                    }
+                    </mat-select>
+                    <mat-error *ngIf="form.get('usu')?.hasError('required')">
+                    El usuario es obligatoria!!
+                    </mat-error>
+                </mat-form-field>
+                <br />
                 <button mat-raised-button>{{ actualizar ? "Actualizar Tipo Usuario" : "Registro de Tipo Usuario"}}</button>
             </form>
+            <br />
+            <button mat-button color="warn" type="button" (click)="cancelar()">
+            Cancelar
+            </button>
         </div>
     </div>
 </div>

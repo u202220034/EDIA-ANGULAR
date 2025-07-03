@@ -2,6 +2,10 @@
     <div style="text-align: center;margin: 5%;">
         <h1>Lista de Proyectos</h1>
     </div>
+    <p class="center-text">
+    Total de Proyectos:
+    {{ dataSource.data ? dataSource.data.length : 0 }}
+    </p>
     <div>
                             <div class="card-grid">
                   <mat-card
@@ -25,7 +29,7 @@
                     </p>
                   </mat-card-content>
                   <mat-card-actions>
-                    <button matButton [routerLink]="['actualizacion', element.idProyecto]" >Actualizar</button>
+                    <button matButton [routerLink]="['ediciones', element.idProyecto]" >Actualizar</button>
                     <button matButton class="btn-eliminar" (click)="eliminar(element.idProyecto)">Eliminar</button>
                   </mat-card-actions>
                 </mat-card>

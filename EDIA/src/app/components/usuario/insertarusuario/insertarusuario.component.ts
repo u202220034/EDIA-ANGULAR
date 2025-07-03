@@ -99,4 +99,7 @@ export class InsertarusuarioComponent implements OnInit {
       });
     }
   }
+  cancelar() {
+    this.router.navigate(['proyecto']);
+  }
 }

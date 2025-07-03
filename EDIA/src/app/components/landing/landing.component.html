@@ -9,10 +9,10 @@
         <a href="#" (click)="scrollTo('presentacion', $event)">¿Qué es EDIA?</a>
       </li>
       <li>
-        <a href="#" (click)="scrollTo('resenia', $event)">Testimonios</a>
+        <a href="#" (click)="scrollTo('noticias', $event)">Noticias</a>
       </li>
       <li>
-        <a href="#" (click)="scrollTo('noticias', $event)">Noticias</a>
+        <a href="#" (click)="scrollTo('resenia', $event)">Testimonios</a>
       </li>
       <li>
         <a href="#" (click)="scrollTo('social-media', $event)">Suscríbete</a>
@@ -21,9 +21,8 @@
   </nav>
 
   <ul class="register">
-    <li><a routerLink="/login">Ingresar</a></li>
-    <li><a routerLink="/registro">Registrarse</a></li>
-  </ul>
+  <li><a class="register-link" (click)="registrarse()">Registrarse</a></li>
+</ul>
 </header>
 
 <main>
@@ -31,9 +30,6 @@
     <div class="element-1">
       <h1>Aprende con los mejores cursos online</h1>
       <p>Únete a EDIA y potencia tus habilidades desde cualquier lugar</p>
-      <a class="btn-register-body" routerLink="/registro">
-        <button class="btn-1">Regístrate y empieza a aprender</button>
-      </a>
       <p>Disponible próximamente en:</p>
 
       <div class="store-buttons">
@@ -116,7 +112,9 @@
         Desde programación hasta diseño gráfico. Aprende a tu ritmo y en
         cualquier momento.
       </p>
-      <button>Explorar cursos</button>
+      <ul class="register">
+        <li><a class="vercursos" (click)="vercursos()">Explorar Cursos</a></li>
+      </ul>
     </div>
   </div>
 
@@ -211,27 +209,28 @@
 <footer>
   <h2 id="social-media"></h2>
   <div class="social-media">
-    <a href="#"
+    <a href="#" (click)="$event.preventDefault()"
       ><img src="assets/images/2023_Facebook_icon.svg.png" alt="facebook_logo"
     /></a>
-    <a href="#"><img src="assets/images/X-Logo.png" alt="twitter_logo" /></a>
-    <a href="#"
+    <a href="#" (click)="$event.preventDefault()">
+      <img src="assets/images/X-Logo.png" alt="twitter_logo" /></a>
+    <a href="#" (click)="$event.preventDefault()"
       ><img src="assets/images/Youtube_logo.png" alt="youtube_logo"
     /></a>
-    <a href="#"
+    <a href="#" (click)="$event.preventDefault()"
       ><img
         src="assets/images/Instagram_logo_2022.svg.png"
         alt="instagram_logo"
     /></a>
-    <a href="#"
+    <a href="#" (click)="$event.preventDefault()"
       ><img src="assets/images/LinkedIn_icon.svg.png" alt="linkedin_logo"
     /></a>
   </div>
   <p class="text-footer">EDIA</p>
   <p class="small">Copyright © 2025 EDIA</p>
   <div class="legal">
-    <a href="#"><p class="paragraph">Términos y condiciones</p></a>
-    <a href="#"><p class="paragraph">Política de privacidad</p></a>
+    <a href="#" (click)="$event.preventDefault()"><p class="paragraph">Términos y condiciones</p></a>
+    <a href="#" (click)="$event.preventDefault()"><p class="paragraph">Política de privacidad</p></a>
   </div>
 </footer>
 
