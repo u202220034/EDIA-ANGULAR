@@ -5,7 +5,7 @@
     "ng": "ng",
     "build": "ng build",
     "build:ssr": "ng build --configuration production && ng run EDIA:server:production",
-    "start": "node dist/edia/server/main.mjs",        
+    "start": "node dist/edia/server/server.mjs",      
     "serve:ssr": "node dist/edia/server/main.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
