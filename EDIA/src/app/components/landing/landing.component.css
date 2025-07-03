@@ -510,7 +510,7 @@ footer {
 
 .nav li a {
   cursor: pointer;
-
+}
 
 #up {
   cursor: pointer;
@@ -519,5 +519,4 @@ footer {
 
 #up:hover {
   transform: scale(1.1); /* hace que el botón crezca un poco al pasar el mouse */
-
 }

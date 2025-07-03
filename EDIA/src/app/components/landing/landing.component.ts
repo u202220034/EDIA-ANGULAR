@@ -61,16 +61,14 @@ export class LandingComponent implements OnInit {
         this.messages.push({ from: 'bot', text: 'Hubo un error al procesar tu mensaje.' });
       }
     });
-
-
-scrollTo(id: string, event: Event) {
-  event.preventDefault(); // evita el salto arriba del todo
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
   }
-}
 
+  scrollTo(id: string, event: Event) {
+    event.preventDefault(); // evita el salto arriba del todo
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   scrollToTop(): void {
