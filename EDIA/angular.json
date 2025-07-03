@@ -18,6 +18,9 @@
             "browser": "src/main.ts",
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            },
             "polyfills": [
               "zone.js"
             ],
@@ -41,6 +44,7 @@
             "scripts": [
               "src/assets/scripts/main.js"
             ]
+            
           },
           "configurations": {
             "production": {
