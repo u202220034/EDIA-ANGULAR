@@ -1,0 +1,28 @@
+/* reporte-cantidadx-curso.component.css */
+
+.title-container {
+  max-width: 800px;           /* Limita el ancho para que sea más elegante */
+  margin: 0 auto;             /* Centra el contenedor */
+  padding: 20px;              /* Espaciado interno */
+  background: #ffffff;        /* Fondo blanco */
+  border-radius: 12px;        /* Bordes redondeados suaves */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);  /* Sombra sutil */
+}
+
+.title h1 {
+  font-size: 1.8rem;          /* Tamaño de fuente grande pero no exagerado */
+  color: #333333;             /* Color oscuro para contraste */
+  margin-bottom: 20px;        /* Espacio debajo del título */
+  font-weight: 600;           /* Semi bold */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* Fuente limpia */
+}
+
+.chart-container {
+  position: relative;
+  height: 400px;             /* Altura fija para el gráfico */
+}
+
+canvas {
+  max-width: 100%;           /* Asegura que el canvas nunca desborde */
+  height: 100% !important;   /* Mantiene la altura del contenedor */
+}
