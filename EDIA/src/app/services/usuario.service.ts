@@ -19,9 +19,7 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.url)
   }
   insert(u: Usuario) {
-    const token = localStorage.getItem('token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post(this.url, u, { headers });
+    return this.http.post(this.url, u);
   }
   getList() {
     return this.listaUsuarioCambio.asObservable();
