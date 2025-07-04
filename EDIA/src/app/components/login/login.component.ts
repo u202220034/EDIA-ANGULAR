@@ -6,6 +6,7 @@ import { JwtRequest } from '../../models/jwtRequest';
 import { MatFormField, MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -27,11 +28,29 @@ export class LoginComponent implements OnInit {
     let request = new JwtRequest();
     request.username = this.username;
     request.password = this.password;
+
     this.loginService.login(request).subscribe(
       (data: any) => {
-        sessionStorage.setItem('token', data.jwttoken);
-        sessionStorage.setItem('role', data.role); // 👈 Agrega esto
+        const helper = new JwtHelperService();
+        const decoded = helper.decodeToken(data.jwttoken);
+        const role = decoded?.tipousuario; // 👈 O como se llame tu claim
 
+        console.log('🚩 Rol decodificado:', role);
+
+        if (!role) {
+          this.snackBar.open(
+            'Falta asignar tipo de usuario. Contacte al administrador.',
+            'cerrar',
+            { duration: 3000 }
+          );
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('role');
+          this.router.navigate(['landing']);
+          return;
+        }
+
+        sessionStorage.setItem('token', data.jwttoken);
+        sessionStorage.setItem('role', role);
         this.router.navigate(['landing']);
       },
       (error) => {
@@ -41,6 +60,7 @@ export class LoginComponent implements OnInit {
     );
   }
   cancelar() {
+    
     this.router.navigate(['landing']);
   }
 }
