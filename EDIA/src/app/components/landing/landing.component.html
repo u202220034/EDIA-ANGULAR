@@ -180,7 +180,7 @@
 </main>
 
 <!-- Botón flotante -->
-<button class="chat-toggle" (click)="toggleChat()">💬</button>
+<button *ngIf="logueado" class="chat-toggle" (click)="toggleChat()">💬</button>
 
 <!-- Ventana de chat -->
 <div class="chat-window" [class.open]="chatOpen">
