@@ -5,28 +5,25 @@ import { MatInputModule } from '@angular/material/input';
 import { Usuario } from '../../../models/usuario';
 import { UsuarioService } from '../../../services/usuario.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { 
+import {
   FormBuilder,
-  FormControl, 
-  Validators, 
-  FormGroup } from '@angular/forms';
+  FormControl,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-insertarusuario',
-  imports: [
-    ReactiveFormsModule, 
-    MatInputModule, 
-    MatButtonModule, 
-    CommonModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, CommonModule],
   templateUrl: './insertarusuario.component.html',
-  styleUrl: './insertarusuario.component.css'
+  styleUrl: './insertarusuario.component.css',
 })
 export class InsertarusuarioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   usuario: Usuario = new Usuario();
   estado: boolean = true;
-  
+
   id: number = 0;
   actualizar: boolean = false;
 
@@ -52,10 +49,18 @@ export class InsertarusuarioComponent implements OnInit {
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      dni: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]+$')]],
+      dni: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(8),
+          Validators.pattern('^[0-9]+$'),
+        ],
+      ],
     });
   }
-  aceptar(){
+  aceptar() {
     if (this.form.valid) {
       this.usuario.idUsuario = this.form.value.codigo;
       this.usuario.username = this.form.value.username;
@@ -71,9 +76,8 @@ export class InsertarusuarioComponent implements OnInit {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);
           });
-       });
-      }
-      else {
+        });
+      } else {
         // Insertar
         this.uS.insert(this.usuario).subscribe(() => {
           this.uS.list().subscribe((data) => {
@@ -81,10 +85,19 @@ export class InsertarusuarioComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['usuarios']);
+      // ✅ Detecta si hay sesión:
+      const token = sessionStorage.getItem('token');
+
+      if (token) {
+        // Si estás logueado (Admin)
+        this.router.navigate(['usuarios']);
+      } else {
+        // Si NO estás logueado (nuevo registro)
+        this.router.navigate(['landing']);
+      }
     }
   }
-  init(){
+  init() {
     if (this.actualizar) {
       this.uS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
@@ -93,13 +106,27 @@ export class InsertarusuarioComponent implements OnInit {
           password: new FormControl(data.password, Validators.required),
           nombre: new FormControl(data.nombre, Validators.required),
           apellidos: new FormControl(data.apellidos, Validators.required),
-          correo: new FormControl(data.correo, [Validators.required, Validators.email]),
-          dni: new FormControl(data.dni, [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]+$')]),
+          correo: new FormControl(data.correo, [
+            Validators.required,
+            Validators.email,
+          ]),
+          dni: new FormControl(data.dni, [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(8),
+            Validators.pattern('^[0-9]+$'),
+          ]),
         });
       });
     }
   }
   cancelar() {
-    this.router.navigate(['proyecto']);
+    const token = sessionStorage.getItem('token');
+
+    if (token) {
+      this.router.navigate(['usuarios']); // Admin
+    } else {
+      this.router.navigate(['landing']); // Visitante
+    }
   }
 }

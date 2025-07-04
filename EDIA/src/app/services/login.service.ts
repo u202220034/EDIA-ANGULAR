@@ -14,6 +14,7 @@ export class LoginService {
   verificar() {
     if (typeof window !== 'undefined' && sessionStorage) {
       let token = sessionStorage.getItem('token');
+
       return token != null;
     }
     return false;
@@ -24,9 +25,13 @@ export class LoginService {
       if (!token) {
         return null; // O un valor por defecto, por ejemplo 'ESTUDIANTE'
       }
+
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
-      return decodedToken?.tipousuario || null;
+      const role = decodedToken?.tipousuario;
+
+      // Si no hay rol, lo tratas como NO AUTORIZADO
+      return role || null;
     }
     return null;
   }
@@ -46,5 +51,4 @@ export class LoginService {
     }
     return null;
   }
-  
 }
