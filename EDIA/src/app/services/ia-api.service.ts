@@ -18,7 +18,7 @@ export class IaApiService {
   const body = {
       model: 'deepseek/deepseek-r1:free',
       messages: [
-        { role: 'system', content: 'Eres un asistente experto en programación y aprendizaje técnico.' },
+        { role: 'system', content: 'Eres un asistente experto en programación. Responde con explicaciones breves, claras y sencillas, máximo 3 párrafos cortos.' },
         { role: 'user', content: prompt }
       ]
     };

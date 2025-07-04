@@ -34,7 +34,7 @@ export const appConfig: ApplicationConfig = {
       JwtModule.forRoot({
         config: {
           tokenGetter: tokenGetter,
-          allowedDomains: ['localhost:8083'],
+          allowedDomains: ['localhost:8083', 'edia-o3oo.onrender.com'],
           disallowedRoutes: ['http://localhost:8083/login/forget'],
         },
       })

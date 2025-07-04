@@ -13,10 +13,16 @@ export const seguridadGuard = (
   const snackBar = inject(MatSnackBar);
 
   const rpta = lService.verificar();
+
   if (!rpta) {
-    router.navigate(['/Inicio_de_Sesion']);
-    return false;
+    snackBar.open('Debes iniciar sesión para acceder.', 'Cerrar', {
+      duration: 3000,
+      panelClass: ['snackbar-error'],
+    });
+    // 👇 Devuelve la URL de redirección:
+    return router.parseUrl('/landing');
   }
+
   // Obtenemos el rol del usuario
   const role = lService.showRole();
 
@@ -49,9 +55,7 @@ export const seguridadGuard = (
       panelClass: ['snackbar-error'],
     });
     router.navigate(['/landing']);
-    return false;
   }
 
-  // Si todo bien:
   return true;
 };

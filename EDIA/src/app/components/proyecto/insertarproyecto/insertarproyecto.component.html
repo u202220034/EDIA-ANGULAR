@@ -33,14 +33,8 @@
                 <br />
 
                 <mat-form-field>
-                    <mat-label>Fecha de Ultima Actualizacion</mat-label>
-                    <input matInput [matDatepicker]="pickerUlt" formControlName="fechault">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="pickerUlt"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerUlt></mat-datepicker>
-                    <mat-error *ngIf="form.get('fechault')?.hasError('required')">
-                        La fecha de ultima actualizacion es obligatoria!!
-                    </mat-error>
+                    <mat-label>Fecha de Última Actualización</mat-label>
+                    <input matInput formControlName="fechault">
                 </mat-form-field>
                 <br />
 
@@ -53,9 +47,13 @@
                     <mat-error *ngIf="form.get('fechacrea')?.hasError('required')">
                         La fecha de Creacion es obligatoria!!
                     </mat-error>
+                    <br />
+                    <mat-error *ngIf="form.get('fechacrea')?.hasError('fechaCreacionInvalida')">
+                        La fecha de creación no puede ser futura.
+                    </mat-error>
                 </mat-form-field>
                 <br />
-
+                <br />
                 <mat-form-field>
                 <mat-label>Seleccione el Usuario</mat-label>
                 <mat-select formControlName="usu">

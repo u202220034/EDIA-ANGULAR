@@ -6,6 +6,11 @@
   <div style="text-align: center; margin: 5%">
     <h1>Lista de Cursos</h1>
   </div>
+  <div *ngIf="!dataSource.data || dataSource.data.length === 0" style="margin-top: 2rem;">
+    <p style="text-align: center; font-size: 1.2rem; color: gray;">
+      No existen cursos registrados.
+    </p>
+  </div>
   <div style="text-align: center; margin: 5%">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
@@ -65,7 +70,7 @@
           <button
             matButton
             class="btn-eliminar"
-            (click)="eliminar(element.idCategoria)"
+            (click)="eliminar(element.idCurso)"
           >
             <mat-icon>delete</mat-icon>
           </button>

@@ -16,6 +16,7 @@ import { ProyectoService } from '../../../services/proyecto.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Usuario } from '../../../models/usuario';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-insertarproyecto',
@@ -38,6 +39,8 @@ export class InsertarproyectoComponent implements OnInit {
 
   id: number = 0;
   actualizar: boolean = false;
+  
+  
 
   listaUsuarios:Usuario[] = [];
 
@@ -48,6 +51,21 @@ export class InsertarproyectoComponent implements OnInit {
     private uS: UsuarioService,
     private route: ActivatedRoute
   ) { }
+
+
+  fechaCreacionValidatorControl(control: AbstractControl): ValidationErrors | null {
+    const value = control.value;
+    if (value) {
+      const fecha = new Date(value);
+      const hoy = new Date();
+      fecha.setHours(0, 0, 0, 0);
+      hoy.setHours(0, 0, 0, 0);
+      if (fecha > hoy) {
+        return { fechaCreacionInvalida: true };
+      }
+    }
+    return null;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -61,21 +79,27 @@ export class InsertarproyectoComponent implements OnInit {
       codigo: [''],
       nombre: ['', Validators.required],
       contenido: ['', Validators.required],
-      fechault: ['', Validators.required],
-      fechacrea: ['', Validators.required],
+      fechault: new FormControl({ value: new Date(), disabled: true }, Validators.required),
+      fechacrea: ['', [Validators.required, this.fechaCreacionValidatorControl]],
       usu: ['', Validators.required],
     });
 
-   this.uS.list().subscribe(data=> {
-    this.listaUsuarios = data;
-   })
+    this.form.get('fechacrea')?.valueChanges.subscribe(() => {
+      this.form.updateValueAndValidity();
+    });
+
+    this.uS.list().subscribe(data=> {
+      this.listaUsuarios = data;
+    })
   }
   aceptar(){
     if(this.form.valid){
+      const raw = this.form.getRawValue();
+
       this.pro.idProyecto = this.form.value.codigo;
       this.pro.nombreProyecto= this.form.value.nombre;
       this.pro.contenido = this.form.value.contenido;
-      this.pro.fechaUltActualizacion = this.form.value.fechault;
+      this.pro.fechaUltActualizacion = raw.fechault;
       this.pro.fechaCreacion = this.form.value.fechacrea;
       this.pro.usuario.idUsuario= this.form.value.usu;
       
@@ -104,7 +128,7 @@ export class InsertarproyectoComponent implements OnInit {
           nombre: new FormControl(data.nombreProyecto, Validators.required),
           contenido: new FormControl(data.contenido, Validators.required),
           fechault: new FormControl(data.fechaUltActualizacion, Validators.required),
-          fechacrea: new FormControl(data.fechaCreacion, Validators.required),
+          fechacrea: new FormControl(data.fechaCreacion, [Validators.required, this.fechaCreacionValidatorControl.bind(this)]),
           usu: new FormControl(data.usuario.idUsuario, Validators.required)
         });
       });
@@ -113,4 +137,5 @@ export class InsertarproyectoComponent implements OnInit {
   cancelar() {
     this.router.navigate(['proyecto']);
   }
+
 }

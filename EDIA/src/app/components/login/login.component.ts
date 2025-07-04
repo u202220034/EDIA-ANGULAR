@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(request).subscribe(
       (data: any) => {
         sessionStorage.setItem('token', data.jwttoken);
+        sessionStorage.setItem('role', data.role); // 👈 Agrega esto
 
         this.router.navigate(['landing']);
       },
@@ -38,5 +39,8 @@ export class LoginComponent implements OnInit {
         this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
       }
     );
+  }
+  cancelar() {
+    this.router.navigate(['landing']);
   }
 }

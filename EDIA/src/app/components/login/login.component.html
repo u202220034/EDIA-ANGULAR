@@ -11,13 +11,19 @@
   <br />
   <mat-form-field class="example-full-width">
     <mat-label>Password</mat-label>
-    <input type="password" 
-    matInput 
-    placeholder="Password" 
-    [(ngModel)]="password" />
+    <input
+      type="password"
+      matInput
+      placeholder="Password"
+      [(ngModel)]="password"
+    />
   </mat-form-field>
   <br />
   <button mat-raised-button class="custom-button" (click)="login()">
     Ingresar
+  </button>
+  <br>
+  <button mat-raised-button class="custom-button"  (click)="cancelar()">
+    Cancelar
   </button>
 </div>

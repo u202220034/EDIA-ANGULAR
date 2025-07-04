@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class LandingComponent implements OnInit {
   
   chatOpen = false;
+  isLoadingIA = false;
   userInput = '';
   messages: { from: 'user' | 'bot', text: string }[] = [];
 
@@ -33,6 +34,10 @@ export class LandingComponent implements OnInit {
     private router: Router,
   ) {}
 
+  get logueado() {
+    return !!sessionStorage.getItem('token');
+  }
+
   ngOnInit(): void {
     this.newsService.getTechNewsInSpanish().subscribe({
       next: (data) => {
@@ -45,27 +50,10 @@ export class LandingComponent implements OnInit {
       }
     });
   }
-
-  sendMessage() {
-  if (!this.userInput.trim()) return;
-
-    const userMsg = this.userInput;
-    this.messages.push({ from: 'user', text: userMsg });
-    this.userInput = '';
-
-    this.hfService.sendToAI(userMsg).subscribe({
-      next: res => {
-      console.log('Respuesta IA:', res);
-      const reply = res?.choices?.[0]?.message?.content || 'No entendí tu pregunta.';
-      const formatted = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-      this.messages.push({ from: 'bot', text: formatted });
-    },
-      error: () => {
-        this.messages.push({ from: 'bot', text: 'Hubo un error al procesar tu mensaje.' });
-      }
-    });
+  cerrarSesion() {
+    sessionStorage.clear();
+    this.router.navigate(['/']);
   }
-
   scrollTo(id: string, event: Event) {
     event.preventDefault(); // evita el salto arriba del todo
     const element = document.getElementById(id);
@@ -73,6 +61,30 @@ export class LandingComponent implements OnInit {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  sendMessage() {
+  if (!this.userInput.trim()) return;
+
+    const userMsg = this.userInput;
+    this.messages.push({ from: 'user', text: userMsg });
+    this.userInput = '';
+    this.isLoadingIA = true;
+
+    this.hfService.sendToAI(userMsg).subscribe({
+      next: res => {
+      console.log('Respuesta IA:', res);
+      const reply = res?.choices?.[0]?.message?.content || 'No entendí tu pregunta.';
+      const formatted = reply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+      this.messages.push({ from: 'bot', text: formatted });
+      this.isLoadingIA = false;
+    },
+      error: () => {
+        this.messages.push({ from: 'bot', text: 'Hubo un error al procesar tu mensaje.' });
+        this.isLoadingIA = false;
+      }
+    });
+  }
+
 
   scrollToTop(): void {
     const navbar = document.getElementById('navbar');
@@ -85,6 +97,9 @@ export class LandingComponent implements OnInit {
 
   vercursos() {
     this.router.navigate(['curso']);
+  }
+  login() {
+    this.router.navigate(['login']);
   }
 
 
