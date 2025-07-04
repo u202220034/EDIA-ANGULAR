@@ -1,4 +1,4 @@
-export const environment = {
-  production: true,
-  base: "https://edia-o3oo.onrender.com"
-};
+export const environment={
+    production:false,
+    base:"https://edia-o3oo.onrender.com"
+}
