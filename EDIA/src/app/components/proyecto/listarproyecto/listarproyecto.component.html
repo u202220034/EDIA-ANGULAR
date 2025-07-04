@@ -2,6 +2,11 @@
     <div style="text-align: center;margin: 5%;">
         <h1>Lista de Proyectos</h1>
     </div>
+    <div *ngIf="!dataSource.data || dataSource.data.length === 0" style="margin-top: 2rem;">
+      <p style="text-align: center; font-size: 1.2rem; color: gray;">
+        No existen Proyectos registrados.
+      </p>
+    </div>
     <p class="center-text">
     Total de Proyectos:
     {{ dataSource.data ? dataSource.data.length : 0 }}

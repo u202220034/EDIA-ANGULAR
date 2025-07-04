@@ -27,7 +27,7 @@ import { ReporteCantidadfechaProyectoComponent } from './components/reportes/rep
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'landing',
     pathMatch: 'full',
   },
   {
@@ -53,17 +53,18 @@ export const routes: Routes = [
   {
     path: 'usuarios',
     component: UsuarioComponent,
+    canActivate: [seguridadGuard],
     children: [
-      {
-        path: 'nuevo',
-        component: InsertarusuarioComponent,
-      },
       {
         path: 'actualizacion/:id',
         component: InsertarusuarioComponent,
       },
     ],
-    canActivate: [seguridadGuard],
+  },
+  {
+    path: 'usuarios/nuevo',
+    component: InsertarusuarioComponent,
+    // NO tiene guard, permitido siempre
   },
   {
     path: 'curso',

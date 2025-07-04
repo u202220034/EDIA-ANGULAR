@@ -12,7 +12,7 @@ export class NewsAPIService {
   constructor(private http: HttpClient) {}
 
   getTechNewsInSpanish(): Observable<any> {
-    const url = `${this.baseUrl}/everything?q=programación AND tecnología&language=es&pageSize=10&sortBy=publishedAt&apiKey=${this.apiKey}`;
+    const url = `${this.baseUrl}/everything?q=programación AND tecnología&language=es&pageSize=3&sortBy=publishedAt&apiKey=${this.apiKey}`;
   return this.http.get(url);
   }
 

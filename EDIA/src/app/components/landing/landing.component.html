@@ -20,9 +20,12 @@
     </ul>
   </nav>
 
-  <ul class="register">
-  <li><a class="register-link" (click)="registrarse()">Registrarse</a></li>
-</ul>
+  <ul class="register" *ngIf="!logueado">
+    <li><a class="register-link" (click)="registrarse()">Registrarse</a></li>
+  </ul>
+  <ul class="register" *ngIf="!logueado">
+    <li><a class="register-link" (click)="login()">Iniciar Sesión</a></li>
+  </ul>
 </header>
 
 <main>
@@ -194,6 +197,9 @@
     >
       <p [innerHTML]="msg.text"></p>
     </div>
+    <div class="loading-message" *ngIf="isLoadingIA">
+      <div class="dot-flashing"></div>
+    </div>
   </div>
 
   <div class="chat-input">
@@ -213,7 +219,8 @@
       ><img src="assets/images/2023_Facebook_icon.svg.png" alt="facebook_logo"
     /></a>
     <a href="#" (click)="$event.preventDefault()">
-      <img src="assets/images/X-Logo.png" alt="twitter_logo" /></a>
+      <img src="assets/images/X-Logo.png" alt="twitter_logo"
+    /></a>
     <a href="#" (click)="$event.preventDefault()"
       ><img src="assets/images/Youtube_logo.png" alt="youtube_logo"
     /></a>
@@ -229,11 +236,14 @@
   <p class="text-footer">EDIA</p>
   <p class="small">Copyright © 2025 EDIA</p>
   <div class="legal">
-    <a href="#" (click)="$event.preventDefault()"><p class="paragraph">Términos y condiciones</p></a>
-    <a href="#" (click)="$event.preventDefault()"><p class="paragraph">Política de privacidad</p></a>
+    <a href="#" (click)="$event.preventDefault()"
+      ><p class="paragraph">Términos y condiciones</p></a
+    >
+    <a href="#" (click)="$event.preventDefault()"
+      ><p class="paragraph">Política de privacidad</p></a
+    >
   </div>
 </footer>
-
 
 <a href="#navbar" id="up">
   <svg
@@ -251,10 +261,16 @@
 </a>
 
 <button id="up" (click)="scrollToTop()">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-    class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    class="bi bi-arrow-up-circle-fill"
+    viewBox="0 0 16 16"
+  >
     <path
-      d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+      d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"
+    />
   </svg>
 </button>
-

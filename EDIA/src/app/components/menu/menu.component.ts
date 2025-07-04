@@ -24,6 +24,8 @@ import { CommonModule } from '@angular/common';
 })
 export class MenuComponent {
   role: string = '';
+  usuario: string = '';
+
   constructor(private loginService: LoginService) {}
   
   cerrar() {
@@ -32,6 +34,8 @@ export class MenuComponent {
 
   verificar() {
     this.role = this.loginService.showRole();
+    this.usuario = this.loginService.showNombre() || ''; // Nuevo
+    
     return this.loginService.verificar();
   }
   isAdmin() {

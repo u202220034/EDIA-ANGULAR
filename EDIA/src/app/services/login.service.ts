@@ -9,7 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class LoginService {
   constructor(private http: HttpClient) {}
   login(request: JwtRequest) {
-    return this.http.post('http://localhost:8083/Inicio_de_Sesion', request);
+    return this.http.post('https://edia-o3oo.onrender.com/Inicio_de_Sesion', request);
   }
   verificar() {
     if (typeof window !== 'undefined' && sessionStorage) {
@@ -27,6 +27,22 @@ export class LoginService {
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
       return decodedToken?.tipousuario || null;
+    }
+    return null;
+  }
+  showNombre() {
+    if (typeof window !== 'undefined' && sessionStorage) {
+      const token = sessionStorage.getItem('token');
+      if (!token) {
+        return null;
+      }
+
+      const helper = new JwtHelperService();
+      const decodedToken = helper.decodeToken(token);
+      const usuario = decodedToken?.username;
+
+      // Si no hay rol, lo tratas como NO AUTORIZADO
+      return usuario || null;
     }
     return null;
   }

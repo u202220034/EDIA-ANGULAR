@@ -546,3 +546,46 @@ footer {
   color: var(--green-dark);
   background-color: #a5d6a7;
 }
+
+.loading-message {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 10px;
+}
+
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ccc;
+  animation: dotFlashing 1s infinite linear alternate;
+}
+
+.dot-flashing::before,
+.dot-flashing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ccc;
+}
+
+.dot-flashing::before {
+  left: -15px;
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: 0.2s;
+}
+
+.dot-flashing::after {
+  left: 15px;
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: 0.4s;
+}
+
+@keyframes dotFlashing {
+  0% { opacity: 0.2; }
+  50%, 100% { opacity: 1; }
+}

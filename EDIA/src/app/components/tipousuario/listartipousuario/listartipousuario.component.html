@@ -2,6 +2,11 @@
     <div style="text-align: center;margin: 5%;">
         <h1>Lista de Tipos de Usuarios</h1>
     </div>
+    <div *ngIf="!dataSource.data || dataSource.data.length === 0" style="margin-top: 2rem;">
+      <p style="text-align: center; font-size: 1.2rem; color: gray;">
+        No existen Tipos de Usuarios registrados.
+      </p>
+    </div>
     <p class="center-text">
       Total de Tipos de Usuarios:
       {{ dataSource.data ? dataSource.data.length : 0 }}
