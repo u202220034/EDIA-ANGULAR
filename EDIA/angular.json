@@ -16,15 +16,11 @@
             "outputPath": "dist/edia",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            },
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
+
             "assets": [
               {
                 "glob": "**/*",
@@ -43,16 +39,20 @@
             ],
             "scripts": [
               "src/assets/scripts/main.js"
-            ]
-            
+            ],
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2MB",
-                  "maximumError": "3MB"
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -70,30 +70,17 @@
           },
           "defaultConfiguration": "production"
         },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/edia/server",
-            "main": "src/main.server.ts",
-            "tsConfig": "tsconfig.server.json"
-          }
-        },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "browserTarget": "EDIA:build:production",
-            "serverTarget": "EDIA:server:production"
-          }
-        },
-        "ssr": {
-          "builder": "@angular-devkit/build-angular:ssr",
-          "options": {
-            "browserTarget": "EDIA:build:production",
-            "serverTarget": "EDIA:server:production"
-          },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {}
-          }
+            "production": {
+              "buildTarget": "EDIA:build:production"
+            },
+            "development": {
+              "buildTarget": "EDIA:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
