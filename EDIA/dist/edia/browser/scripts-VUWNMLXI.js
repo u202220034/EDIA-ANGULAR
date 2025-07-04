@@ -1,0 +1,1 @@
+window.addEventListener("scroll",function(){var e=document.getElementById("up");window.scrollY>500?e.style.display="block":e.style.display="none"});var btnRegresarArriba=document.getElementById("up");
