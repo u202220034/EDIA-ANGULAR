@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listarusuariocurso',
@@ -23,11 +24,22 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 })
 export class ListarusuariocursoComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<usuariocurso> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  rol: string | null = null;
 
-  constructor(private ucS: UsuariocursoService) {}
+  constructor(
+    private ucS: UsuariocursoService,
+    private loginService: LoginService // 👈 inyecta el servicio
+  ) {}
   ngOnInit(): void {
+    // Obtiene el rol
+    this.rol = this.loginService.showRole();
+
+    // Si NO es estudiante, agrega columnas de actualizar y eliminar
+    if (this.rol !== 'ESTUDIANTE') {
+      this.displayedColumns.push('c6', 'c7');
+    }
     this.ucS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

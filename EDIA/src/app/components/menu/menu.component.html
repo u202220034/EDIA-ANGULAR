@@ -9,7 +9,7 @@
       mat-button
       [matMenuTriggerFor]="menuUsuarios"
       class="btn-rojo"
-      *ngIf="isAdmin() || isEstudiante()"
+      *ngIf="isAdmin()"
     >
       <mat-icon>person</mat-icon>
       Usuarios
@@ -42,7 +42,7 @@
       mat-button
       [matMenuTriggerFor]="menuUsuarioCursos"
       class="btn-rojo"
-      *ngIf="isAdmin() || isEstudiante()"
+      *ngIf="isAdmin()"
     >
       <mat-icon>wc</mat-icon>
       Usuario-Cursos
@@ -77,7 +77,7 @@
     mat-button
     [matMenuTriggerFor]="menuTipoUsuario"
     class="btn-rojo"
-    *ngIf="isAdmin() || isEstudiante()"
+    *ngIf="isAdmin()"
   >
     <mat-icon>people</mat-icon>
     Tipo de Usuario

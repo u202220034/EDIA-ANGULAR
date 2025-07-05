@@ -1,63 +1,68 @@
 <div class="container">
-    <div style="text-align: center;margin: 5%;">
-        <h1>Lista de Tipos de Usuarios</h1>
-    </div>
-    <div *ngIf="!dataSource.data || dataSource.data.length === 0" style="margin-top: 2rem;">
-      <p style="text-align: center; font-size: 1.2rem; color: gray;">
-        No existen Tipos de Usuarios registrados.
-      </p>
-    </div>
-    <p class="center-text">
-      Total de Tipos de Usuarios:
-      {{ dataSource.data ? dataSource.data.length : 0 }}
+  <div style="text-align: center; margin: 5%">
+    <h1>Lista de Tipos de Usuarios</h1>
+  </div>
+  <div
+    *ngIf="!dataSource.data || dataSource.data.length === 0"
+    style="margin-top: 2rem"
+  >
+    <p style="text-align: center; font-size: 1.2rem; color: gray">
+      No existen Tipos de Usuarios registrados.
     </p>
-    <div>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  </div>
+  <p class="center-text">
+    Total de Tipos de Usuarios:
+    {{ dataSource.data ? dataSource.data.length : 0 }}
+  </p>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="c1">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.idTipoUsuario }}</td>
+      </ng-container>
 
-                    <!-- Position Column -->
-            <ng-container matColumnDef="c1">
-              <th mat-header-cell *matHeaderCellDef> ID</th>
-              <td mat-cell *matCellDef="let element"> {{element.idTipoUsuario}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="c2">
-              <th mat-header-cell *matHeaderCellDef> Tipo de Usuario </th>
-              <td mat-cell *matCellDef="let element"> {{element.tipoUsuario}} </td>
-            </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="c2">
+        <th mat-header-cell *matHeaderCellDef>Tipo de Usuario</th>
+        <td mat-cell *matCellDef="let element">{{ element.tipoUsuario }}</td>
+      </ng-container>
 
-            <ng-container matColumnDef="c3">
-              <th mat-header-cell *matHeaderCellDef> Usuario </th>
-              <td mat-cell *matCellDef="let element"> {{element.usuario.username}} </td>
-            </ng-container>
-               <!-- Symbol Column -->
-            <ng-container matColumnDef="c4">
-              <th mat-header-cell *matHeaderCellDef> Actualizar </th>
-              <td mat-cell *matCellDef="let element">
-                  <button matButton [routerLink]="['ediciones',element.idTipoUsuario]"
-                  >
-                  <mat-icon>edit</mat-icon>
-                </button>
-                </td>
-            </ng-container>
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.usuario.username }}
+        </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="c4" *ngIf="rol !== 'ESTUDIANTE'">
+        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+        <td mat-cell *matCellDef="let element">
+          <button matButton [routerLink]="['ediciones', element.idTipoUsuario]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="c5">
-              <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-              <td mat-cell *matCellDef="let element">
-                <button matButton class="btn-eliminar" (click)="eliminar(element.idTipoUsuario)">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </td>
-            </ng-container>
-          
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-          
-          
-    </div>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 15]"
-      showFirstLastButtons
-    ></mat-paginator>
+      <ng-container matColumnDef="c5" *ngIf="rol !== 'ESTUDIANTE'">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let element">
+          <button
+            matButton
+            class="btn-eliminar"
+            (click)="eliminar(element.idTipoUsuario)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 15]"
+    showFirstLastButtons
+  ></mat-paginator>
 </div>

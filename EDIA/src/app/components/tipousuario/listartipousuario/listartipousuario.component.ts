@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { Tipousuario } from '../../../models/tipousuario';
 import { TipousuarioService } from '../../../services/tipousuario.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-listartipousuario',
@@ -16,38 +17,52 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     RouterLink,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   templateUrl: './listartipousuario.component.html',
-  styleUrl: './listartipousuario.component.css'
+  styleUrl: './listartipousuario.component.css',
 })
 export class ListartipousuarioComponent implements OnInit {
-  dataSource: MatTableDataSource<Tipousuario> = new MatTableDataSource<Tipousuario>([]);
+  dataSource: MatTableDataSource<Tipousuario> =
+    new MatTableDataSource<Tipousuario>([]);
 
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5']
+  displayedColumns: string[] = ['c1', 'c2', 'c3'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  rol: string | null = null;
 
-  constructor(private tuS: TipousuarioService) { }
+  constructor(
+    private tuS: TipousuarioService,
+    private loginService: LoginService // 👈 inyecta el servicio
+  ) {}
 
   ngOnInit(): void {
-    this.tuS.list().subscribe(data => {
+    // Obtiene el rol
+    this.rol = this.loginService.showRole();
+
+    // Si NO es estudiante, agrega columnas de actualizar y eliminar
+    if (this.rol !== 'ESTUDIANTE') {
+      this.displayedColumns.push('c4', 'c5');
+    }
+    this.rol = this.loginService.showRole();
+
+    this.tuS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-    })
-    this.tuS.getList().subscribe(data => {
+    });
+    this.tuS.getList().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
-    })
+    });
   }
 
   eliminar(id: number) {
-    this.tuS.deleteA(id).subscribe(data => {
-      this.tuS.list().subscribe(data => {
+    this.tuS.deleteA(id).subscribe((data) => {
+      this.tuS.list().subscribe((data) => {
         this.tuS.setList(data);
         this.dataSource.paginator = this.paginator;
-      })
-    })
+      });
+    });
   }
 
   ngAfterViewInit() {
