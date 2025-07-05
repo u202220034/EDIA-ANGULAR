@@ -1,11 +1,12 @@
 {
   "name": "edia",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
     "build:ssr": "ng build && ng run EDIA:server",
-    "start": "node dist/edia/server/server.mjs",
+    "start": "node dist/edia/server/main.js",
     "serve:ssr": "node dist/edia/server/main.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
