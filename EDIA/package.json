@@ -4,11 +4,12 @@
   "scripts": {
     "ng": "ng",
     "build": "ng build",
-    "build:ssr": "ng build --configuration production && ng run EDIA:server:production",
-    "start": "node dist/edia/server/server.mjs",      
-    "serve:ssr": "node dist/edia/server/main.mjs",
+    "build:ssr": "ng build && ng run EDIA:server",
+    "start": "node dist/edia/server/server.mjs",
+    "serve:ssr": "node dist/edia/server/main.js",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "dev:ssr": "ng run EDIA:serve-ssr"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/router": "^19.2.0",
     "@angular/ssr": "^19.2.7",
     "@auth0/angular-jwt": "^5.2.0",
+    "@nguniversal/express-engine": "^7.0.2",
     "chart.js": "^4.5.0",
     "express": "^4.18.2",
     "ng2-charts": "^8.0.0",
