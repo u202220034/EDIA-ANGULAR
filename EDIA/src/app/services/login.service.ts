@@ -44,7 +44,7 @@ export class LoginService {
 
       const helper = new JwtHelperService();
       const decodedToken = helper.decodeToken(token);
-      const usuario = decodedToken?.username;
+      const usuario = decodedToken?.sub;
 
       // Si no hay rol, lo tratas como NO AUTORIZADO
       return usuario || null;
